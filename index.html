@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- MOBILE LOCK: Prevents zoom and horizontal bounce -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>POLARVIS | Smarter Glass. Better Living.</title>
+    
+    <!-- Assets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. POLARVIS BRAND IDENTITY --- */
+        :root {
+            /* Brand Colors */
+            --ice-blue: #00f2ff;
+            --deep-ocean: #0051ff;
+            --aurora-purple: #7000ff;
+            --polar-white: #ffffff;
+            --security-red: #ff2a2a; 
+            
+            /* Backgrounds */
+            --bg-dark: #02050a;
+            --bg-forest: #051414; /* Subtle hint of the forest green from your images */
+            
+            /* UI Elements */
+            --glass-surface: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-secondary: #a0b3c6;
+            
+            /* Gradients */
+            --polar-gradient: linear-gradient(135deg, var(--ice-blue), var(--deep-ocean));
+            --aurora-gradient: linear-gradient(135deg, #00f2ff, #7000ff);
+            
+            --easing: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body, html {
+            margin: 0; padding: 0;
+            overflow-x: hidden;
+            width: 100%;
+            overscroll-behavior-x: none;
+            touch-action: pan-y;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            background: radial-gradient(circle at top center, #0f1c2e, var(--bg-dark));
+            color: var(--polar-white);
+            font-family: 'Montserrat', sans-serif;
+            cursor: default;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--deep-ocean); border-radius: 3px; }
+
+        /* Typography */
+        h1, h2, h3, h4, .tech-font { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
+        
+        .gradient-text {
+            background: var(--polar-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- 2. PRELOADER (Ice Themed) --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-dark); z-index: 9999;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .loader-logo { font-size: 3rem; font-weight: 700; letter-spacing: 5px; margin-bottom: 20px; font-family: 'Rajdhani'; color: white; }
+        .loader-bar-wrap { width: 200px; height: 2px; background: #333; position: relative; overflow: hidden; }
+        .loader-bar { width: 0%; height: 100%; background: var(--ice-blue); position: absolute; left: 0; animation: load 2.5s var(--easing) forwards; box-shadow: 0 0 10px var(--ice-blue); }
+        .loader-text { margin-top: 10px; font-size: 0.7rem; color: var(--ice-blue); font-family: 'Rajdhani'; letter-spacing: 2px; }
+        @keyframes load { 0% { width: 0%; } 100% { width: 100%; } }
+
+        /* --- 3. BACKGROUND FX (Aurora Borealis) --- */
+        .ambient-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.3; animation: floatOrb 20s infinite alternate; }
+        
+        /* Updated Orb Colors to Blue/Purple/Teal */
+        .orb-1 { top: -10%; left: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, #00f2ff, transparent); animation-duration: 25s; } /* Cyan */
+        .orb-2 { bottom: -10%; right: -20%; width: 70vw; height: 70vw; background: radial-gradient(circle, #7000ff, transparent); animation-delay: -5s; } /* Purple */
+        .orb-3 { top: 40%; left: 30%; width: 40vw; height: 40vw; background: radial-gradient(circle, #0051ff, transparent); opacity: 0.2; animation-duration: 18s; } /* Deep Blue */
+        
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 30px) scale(1.1); } }
+        
+        /* Mesh Texture */
+        .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"); z-index: 0; pointer-events: none; }
+
+        /* --- 4. NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; 
+            /* Improved padding for better mobile safe area */
+            padding: 12px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(2, 5, 10, 0.7);
+            box-sizing: border-box; /* Ensures padding doesn't overflow width */
+        }
+        .brand-logo { font-size: 1.4rem; font-weight: 800; color: #fff; text-decoration: none; letter-spacing: -1px; display: flex; align-items: center; gap: 10px; }
+        .brand-logo i { color: var(--ice-blue); filter: drop-shadow(0 0 5px var(--ice-blue)); }
+        
+        .cta-btn { 
+            color: #fff; background: transparent; 
+            border: 1px solid var(--ice-blue);
+            text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; 
+            padding: 10px 20px; border-radius: 50px; transition: 0.3s; font-family: 'Rajdhani', sans-serif; 
+            white-space: nowrap; /* Prevents text breaking on small screens */
+        }
+        .cta-btn:hover { background: var(--ice-blue); color: #000; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
+
+        /* --- 5. HERO --- */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; /* Changed from center to push content up */
+            align-items: center; 
+            text-align: center; 
+            padding: 130px 20px 20px; /* Increased top padding to position below nav */
+            position: relative; 
+        }
+        
+        /* Updated Hero Tag - STACKED LAYOUT */
+        .hero-tag { 
+            margin-bottom: 25px; opacity: 0; animation: fadeUp 1s 0.5s forwards; 
+            font-weight: 700; text-transform: uppercase;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+        }
+        
+        /* Slightly smaller H1 as requested */
+        .hero h1 { 
+            font-size: clamp(2.5rem, 8vw, 5rem); 
+            font-weight: 800; line-height: 1.1; margin-bottom: 30px; opacity: 0; animation: fadeUp 1s 0.7s forwards; 
+        }
+        
+        .hero p { font-size: 1.1rem; max-width: 500px; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.8; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
+        .cta-container { opacity: 0; animation: fadeUp 1s 1.1s forwards; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;}
+        
+        /* Updated Glow Button for Hero */
+        .btn-glow { 
+            padding: 16px 40px; background: rgba(255,255,255,0.05); color: white; 
+            border: 1px solid rgba(255,255,255,0.2); 
+            font-family: 'Rajdhani'; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; position: relative; overflow: hidden; text-decoration: none; transition: 0.3s; backdrop-filter: blur(5px); 
+        }
+        .btn-glow::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.2), transparent); transition: 0.5s; }
+        .btn-glow:hover { border-color: var(--ice-blue); box-shadow: 0 0 30px rgba(0, 242, 255, 0.15); color: white; }
+        .btn-glow:hover::before { left: 100%; }
+        
+        .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; opacity: 0.5; }
+
+        /* --- 6. MARQUEE (Updated to Blue/Dark) --- */
+        .marquee-wrap { width: 100%; background: rgba(0, 242, 255, 0.05); border-top: 1px solid var(--deep-ocean); border-bottom: 1px solid var(--deep-ocean); padding: 15px 0; overflow: hidden; position: relative; z-index: 10; transform: rotate(-2deg) scale(1.05); backdrop-filter: blur(5px); }
+        .marquee-inner { display: flex; width: fit-content; animation: scrollText 30s linear infinite; }
+        .marquee-item { white-space: nowrap; font-family: 'Rajdhani'; font-weight: 800; font-size: 1.2rem; color: #fff; padding: 0 30px; display: flex; align-items: center; letter-spacing: 2px; }
+        .dot { height: 6px; width: 6px; background: var(--ice-blue); border-radius: 50%; display: inline-block; margin-left: 30px; box-shadow: 0 0 10px var(--ice-blue); }
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- 7. NEW: ABOUT OUR NAME --- */
+        .identity-section { padding: 100px 20px; text-align: center; }
+        .split-concept { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .concept-box { padding: 30px; border-left: 1px solid var(--glass-border); text-align: left; }
+        .concept-box h3 { font-size: 3rem; margin-bottom: 10px; font-weight: 800; letter-spacing: -2px; }
+        .concept-box p { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
+        .concept-box.polar h3 { color: var(--ice-blue); }
+        .concept-box.vis h3 { color: var(--deep-ocean); }
+
+        @media (max-width: 768px) { .split-concept { grid-template-columns: 1fr; border: none; } .concept-box { border-left: 2px solid var(--glass-border); } }
+
+        /* --- 8. CARDS (THE 5 TYPES) --- */
+        .collection-section { padding: 80px 20px; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        
+        .tech-card { 
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--glass-border); 
+            padding: 30px; 
+            border-radius: 15px; 
+            position: relative; 
+            overflow: hidden; 
+            transition: 0.4s var(--easing); 
+        }
+        
+        .tech-card:hover { transform: translateY(-5px); border-color: var(--ice-blue); background: rgba(0, 242, 255, 0.05); }
+        .tech-card h3 { font-size: 1.3rem; color: #fff; margin-bottom: 10px; }
+        .tech-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Updated Icon Gradients (Blue/Purple) */
+        .card-icon { font-size: 2rem; margin-bottom: 20px; background: var(--aurora-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Highlight for Specialist Card */
+        .specialist-highlight { border: 1px solid rgba(255, 42, 42, 0.4); background: linear-gradient(180deg, rgba(255, 42, 42, 0.05) 0%, rgba(0,0,0,0) 100%); }
+        .specialist-highlight .card-icon { background: linear-gradient(135deg, #ff2a2a, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .specialist-highlight:hover { border-color: var(--security-red); }
+
+        /* --- 9. NEW: SOLUTIONS GRID (Why Choose Us) --- */
+        .solutions-section { padding: 80px 20px; background: rgba(255,255,255,0.02); }
+        .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto 0; }
+        .sol-item { text-align: center; }
+        .sol-item i { font-size: 2.5rem; color: var(--ice-blue); margin-bottom: 20px; opacity: 0.8; }
+        .sol-item h4 { margin-bottom: 10px; color: white; }
+        .sol-item p { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* --- 10. VISUALIZER (DATA JAMMER SPOTLIGHT) --- */
+        .simulator-section { 
+            padding: 80px 20px; 
+            position: relative; 
+            text-align: center;
+            /* Subtle radial gradient background */
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.03) 0%, transparent 70%);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .sim-wrapper {
+            max-width: 900px; width: 100%; margin: 0 auto;
+            aspect-ratio: 16 / 9; /* LOCKED RATIO for Mobile */
+            border-radius: 15px; position: relative; overflow: hidden;
+            border: 1px solid var(--security-red); background: #000;
+            box-shadow: 0 0 30px rgba(255, 42, 42, 0.1);
+        }
+
+        /* The Scene */
+        .jammer-sim { width: 100%; height: 100%; position: absolute; top: 0; left: 0; overflow: hidden; }
+        
+        /* Blurred Office Background */
+        .office-bg { width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop') center/cover; filter: blur(3px) brightness(0.6); transform: scale(1.1); }
+
+        /* CSS LAPTOP CONSTRUCTION */
+        .css-laptop {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 50%; aspect-ratio: 16/10; 
+            background: #1a1a1a;
+            border-radius: 8px 8px 0 0;
+            border: 10px solid #222; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        /* Laptop Base */
+        .css-laptop::after {
+            content: ''; position: absolute; bottom: -20px; left: -10%; width: 120%; height: 20px;
+            background: #333; border-radius: 0 0 10px 10px;
+            transform-origin: top; transform: perspective(500px) rotateX(20deg);
+        }
+
+        /* Screen Content */
+        .screen-content {
+            width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop') center/cover;
+            position: relative;
+        }
+
+        /* THE JAMMER (Black Overlay) */
+        .screen-jammer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            opacity: 0; /* Controlled by slider */
+            transition: opacity 0.1s linear;
+        }
+
+        /* Glass Reflection */
+        .glass-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.05) 45%, transparent 50%);
+            pointer-events: none; z-index: 20;
+        }
+
+        /* Controls - Updated Colors */
+        .sim-controls {
+            max-width: 600px; margin: 20px auto; padding: 15px;
+            background: rgba(0,0,0,0.5); border-radius: 50px; border: 1px solid rgba(255, 42, 42, 0.3);
+            display: flex; align-items: center; gap: 15px;
+        }
+
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; height: 30px; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%;
+            background: var(--security-red); cursor: pointer; margin-top: -12px;
+            box-shadow: 0 0 10px var(--security-red);
+        }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #555; border-radius: 2px; }
+
+
+        /* --- 11. FOOTER --- */
+        .heritage-wrap { padding: 60px 20px; text-align: center; border-top: 1px solid var(--glass-border); background: linear-gradient(0deg, #000 0%, rgba(0, 81, 255, 0.05) 100%); }
+        .parent-brand { font-size: 2.5rem; font-weight: 900; color: #fff; margin-bottom: 20px; font-family: 'Rajdhani'; letter-spacing: 2px; }
+        footer { padding: 40px 20px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #666; text-align: center; }
+
+        /* Animations */
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; box-shadow: 0 0 10px var(--ice-blue); } 100% { opacity: 0.5; } }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
+
+    </style>
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="preloader">
+        <div class="loader-logo">POLARVIS</div>
+        <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+        <div class="loader-text">INITIALIZING SYSTEMS</div>
+    </div>
+
+    <!-- BG -->
+    <div class="ambient-canvas">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="brand-logo"><i class="fa-regular fa-snowflake"></i> POLARVIS</a>
+        <!-- Updated Link to Mailto -->
+        <a href="mailto:contact@polarvis.uk" class="cta-btn">Get Quote</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <!-- Updated Title Structure -->
+        <div class="hero-tag">
+            <span style="font-size: 1rem; letter-spacing: 4px; color: var(--polar-white);">INTRODUCING POLARVIS</span>
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--ice-blue); opacity: 0.9;">AN ELITE WRAPZ COMPANY</span>
+        </div>
+        <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span></h1>
+        <p>The definitive solution for heat reduction, privacy, and safety. Powered by the precision engineering of Elite Wrapz.</p>
+        <div class="cta-container">
+            <a href="#identity" class="btn-glow">Discover More</a>
+        </div>
+        <div class="scroll-indicator"><i class="fa-solid fa-chevron-down" style="color:var(--ice-blue);"></i></div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+        <div class="marquee-inner">
+            <div class="marquee-item">SOLAR CONTROL <span class="dot"></span></div>
+            <div class="marquee-item">PRIVACY <span class="dot"></span></div>
+            <div class="marquee-item">DATA JAMMER <span class="dot"></span></div>
+            <div class="marquee-item">SAFETY <span class="dot"></span></div>
+            <div class="marquee-item">SPECIALIST <span class="dot"></span></div>
+            <div class="marquee-item">SOLAR CONTROL <span class="dot"></span></div>
+            <div class="marquee-item">PRIVACY <span class="dot"></span></div>
+            <div class="marquee-item">DATA JAMMER <span class="dot"></span></div>
+        </div>
+    </div>
+
+    <!-- NEW: IDENTITY SECTION -->
+    <section class="identity-section" id="identity">
+        <h2 style="font-size: 2rem; color: white; margin-bottom: 10px;">The Philosophy</h2>
+        <div style="width: 50px; height: 3px; background: var(--ice-blue); margin: 0 auto 30px;"></div>
+        
+        <div class="split-concept">
+            <div class="concept-box polar">
+                <h3>POLAR</h3>
+                <p>Reflecting coolness, heat reduction, and environmental control. Just as the poles regulate the earth, our films regulate your interior climate.</p>
+            </div>
+            <div class="concept-box vis">
+                <h3>VIS</h3>
+                <p>Short for "Vision." Representing optical clarity, improved visibility, and the future of how we see through glass.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 FILM TYPES GRID -->
+    <section class="collection-section" id="films">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.5rem;">Core Technologies</h2>
+            <p style="color:var(--text-secondary); max-width: 600px; margin: 10px auto 0;">Comprehensive glazing solutions for every environment.</p>
+        </div>
+        <div class="card-grid">
+            <div class="tech-card">
+                <i class="fa-solid fa-temperature-arrow-down card-icon"></i>
+                <h3>Solar Control</h3>
+                <p>Reflects solar energy before it enters your room. Perfect for conservatories, offices, and south-facing windows to reduce heat and glare.</p>
+            </div>
+            
+            <div class="tech-card">
+                <i class="fa-solid fa-eye-slash card-icon"></i>
+                <h3>Privacy</h3>
+                <p>One-way mirror or frosted finishes. See out during the day while stopping others from seeing in. Essential for street-level properties.</p>
+            </div>
+
+            <div class="tech-card">
+                <i class="fa-solid fa-wand-magic-sparkles card-icon"></i>
+                <h3>Decorative</h3>
+                <p>Frosted patterns, manifestations, and textured films. Transform glass partitions in offices or add style to bathroom windows.</p>
+            </div>
+
+            <div class="tech-card">
+                <i class="fa-solid fa-shield-halved card-icon"></i>
+                <h3>Safety</h3>
+                <p>Thick, optically clear films that hold glass together upon impact. Prevents shattering from accidents or break-in attempts.</p>
+            </div>
+
+            <div class="tech-card specialist-highlight">
+                <i class="fa-solid fa-fingerprint card-icon"></i>
+                <h3>Specialist</h3>
+                <p>High-tech solutions for demanding environments. Includes Anti-Fog, Anti-Graffiti, and our signature <strong>Data Jammer</strong> technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: WHY CHOOSE US (SOLUTIONS) -->
+    <section class="solutions-section">
+        <div style="text-align: center;">
+            <h2 style="font-size: 2rem;">Why Choose Polarvis?</h2>
+            <div style="width: 50px; height: 3px; background: var(--deep-ocean); margin: 20px auto;"></div>
+        </div>
+        <div class="solutions-grid">
+            <div class="sol-item">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Energy Efficient</h4>
+                <p>Lower your cooling bills by blocking up to 82% of solar heat.</p>
+            </div>
+            <div class="sol-item">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <h4>UV Protection</h4>
+                <p>Block 99% of harmful UV rays to protect skin and stop furniture fading.</p>
+            </div>
+            <div class="sol-item">
+                <i class="fa-solid fa-glasses"></i>
+                <h4>Glare Reduction</h4>
+                <p>Improve screen visibility and eye comfort in bright rooms.</p>
+            </div>
+            <div class="sol-item">
+                <i class="fa-solid fa-medal"></i>
+                <h4>Elite Precision</h4>
+                <p>Installed by the same experts behind Elite Wrapz. Flawless finish guaranteed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DATA JAMMER VISUALIZER (Specialist Example) -->
+    <section class="simulator-section" id="simulator">
+        <h2 style="font-size:2rem; margin-bottom:5px; color: var(--security-red);">Specialist Spotlight</h2>
+        <h3 style="font-size:1.5rem; margin-bottom:15px; color: white;">DATA JAMMER</h3>
+        <p style="color:var(--text-secondary); margin-bottom: 30px; max-width: 600px; margin: 0 auto 30px;">
+            Experience our Specialist Data Jammer film. 
+            <br>
+            <span style="color: var(--security-red);">Slide to activate:</span> The glass remains clear, but digital screens turn black to protect sensitive info.
+        </p>
+
+        <div class="sim-wrapper">
+            <!-- Jammer Scene -->
+            <div class="jammer-sim" id="jammerSim">
+                <div class="office-bg"></div>
+                <!-- CSS Virtual Laptop -->
+                <div class="css-laptop">
+                    <div class="screen-content">
+                        <!-- Black Jammer Overlay -->
+                        <div class="screen-jammer" id="jammerOverlay"></div>
+                    </div>
+                </div>
+                <!-- Reflection -->
+                <div class="glass-overlay"></div>
+
+                <div style="position: absolute; bottom: 20px; left: 20px; text-align: left; z-index: 20;">
+                    <h3 id="jammerText" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Screen Visible</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="sim-controls">
+            <i class="fa-solid fa-laptop" style="color: white;"></i>
+            <input type="range" min="0" max="100" value="0" id="simRange" oninput="updateSim(this.value)">
+            <i class="fa-solid fa-user-secret" style="color: var(--security-red);"></i>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div style="max-width: 800px; margin: 40px auto 0; text-align: left; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; border: 1px solid var(--glass-border);">
+            <h4 style="color: var(--polar-white); margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-shield-halved" style="color: var(--security-red);"></i> How It Works
+            </h4>
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                Polarvis Data Jammer is a specialized optical film applied directly to existing glass partitions or windows. It utilizes advanced polarization technology to render LED and LCD screens completely black to outside observers.
+            </p>
+            <p style="color: var(--text-secondary);">
+                While the glass remains transparent—maintaining the open feel of your office—sensitive financial data, personal information, and confidential presentations on screens become invisible to anyone walking by. It is the ultimate solution for compliance and visual privacy in modern, glass-walled workspaces.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="heritage-wrap">
+        <p style="color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Part of the Collective</p>
+        <div class="parent-brand">ELITE WRAPZ</div>
+        <p style="max-width: 600px; margin: 0 auto; color: #888; line-height: 1.6;">Interior Surfaces & Architectural Glass.</p>
+        <a href="https://www.elitewrapz.uk" target="_blank" style="display: inline-block; margin-top: 20px; color: white; border-bottom: 1px solid var(--ice-blue); text-decoration: none; padding-bottom: 5px;">Visit Elite Wrapz &rarr;</a>
+    </section>
+
+    <footer id="contact">
+        <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
+            <a href="mailto:info@elitewrapz.uk" class="btn-glow" style="border-color: var(--ice-blue); color:white;">Email Us</a>
+        </div>
+        <p>&copy; 2025 Polarvis. A Division of Elite Wrapz.</p>
+    </footer>
+
+    <script>
+        // SMART PRELOADER
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('preloader');
+            if (sessionStorage.getItem('polarvis_intro_shown')) {
+                loader.style.display = 'none'; 
+            } else {
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.display = 'none'; }, 800);
+                    sessionStorage.setItem('polarvis_intro_shown', 'true');
+                }, 1500);
+            }
+        });
+
+        // SIMULATOR LOGIC
+        function updateSim(val) {
+            // JAMMER LOGIC (Opacity)
+            const overlay = document.getElementById('jammerOverlay');
+            const text = document.getElementById('jammerText');
+            
+            overlay.style.opacity = val / 100;
+
+            if(val < 10) text.innerText = "Screen Visible";
+            else if(val < 90) text.innerText = "Jamming Signal...";
+            else text.innerText = "Data Hidden (View Clear)";
+        }
+    </script>
+</body>
+</html>
