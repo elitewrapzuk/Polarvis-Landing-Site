@@ -50,6 +50,7 @@
             width: 100%;
             overscroll-behavior-x: none;
             touch-action: pan-y;
+            /* Ensures the dark color is behind the mobile status bar */
             background-color: var(--bg-dark);
         }
         
@@ -103,7 +104,7 @@
         /* --- 4. NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            /* SAFE AREA PADDING */
+            /* SAFE AREA PADDING: Prevents notch overlap */
             padding-top: max(15px, env(safe-area-inset-top));
             padding-bottom: 15px;
             padding-left: 20px;
@@ -137,15 +138,16 @@
         }
         .cta-btn:hover { background: var(--ice-blue); color: #000; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
 
-        /* --- 5. HERO --- */
+        /* --- 5. HERO (Updated Gap Settings) --- */
         .hero { 
+            /* 85vh height keeps content visible above fold */
             min-height: 85vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: center;
             align-items: center; 
             text-align: center; 
-            /* Extra top padding for mobile status bar */
+            /* Extra top padding so content clears the status bar on mobile */
             padding: 140px 20px 40px;
             position: relative; 
         }
