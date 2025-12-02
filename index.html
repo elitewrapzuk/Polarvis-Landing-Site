@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <meta name="theme-color" content="#02050a">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-navbutton-color" content="#02050a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <title>POLARVIS | Smarter Glass. Better Living.</title>
     
@@ -103,12 +104,12 @@
         /* --- 4. NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            /* UPDATED PADDING: Increased to accommodate larger logo */
-            padding: 15px 20px;
+            /* UPDATED PADDING: Reduced for sleek rectangular look */
+            padding: 10px 20px;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            background: rgba(2, 5, 10, 0.8); /* Slightly darker opacity */
+            background: rgba(2, 5, 10, 0.85); /* Slightly darker/more solid */
             box-sizing: border-box; 
         }
         
@@ -119,8 +120,8 @@
             text-decoration: none; 
         }
         .brand-logo img {
-            /* INCREASED HEIGHT from 35px to 55px */
-            height: 55px; 
+            /* RECTANGULAR SIZE: Reduced from 55px to 40px */
+            height: 40px; 
             width: auto;
             display: block;
         }
@@ -136,15 +137,15 @@
 
         /* --- 5. HERO (Updated Gap Settings) --- */
         .hero { 
-            /* Changed from 100vh to 85vh to bring the content up closer to marquee */
+            /* 85vh height keeps content visible above fold */
             min-height: 85vh; 
             display: flex; 
             flex-direction: column; 
-            justify-content: center; /* Center content vertically */
+            justify-content: center;
             align-items: center; 
             text-align: center; 
-            /* Reduced bottom padding significantly */
-            padding: 120px 20px 40px; /* Increased top padding slightly for larger nav */
+            /* Standard padding */
+            padding: 100px 20px 40px;
             position: relative; 
         }
         
@@ -171,15 +172,13 @@
         .btn-glow:hover { border-color: var(--ice-blue); box-shadow: 0 0 30px rgba(0, 242, 255, 0.15); color: white; }
         .btn-glow:hover::before { left: 100%; }
         
-        /* Hidden scroll indicator because the gap is smaller now */
         .scroll-indicator { display: none; }
 
         /* --- 6. MARQUEE --- */
         .marquee-wrap { 
             width: 100%; background: rgba(0, 242, 255, 0.05); border-top: 1px solid var(--deep-ocean); border-bottom: 1px solid var(--deep-ocean); padding: 15px 0; overflow: hidden; position: relative; z-index: 10; 
-            /* Adjusted transform to sit tighter */
             transform: rotate(-2deg) scale(1.05); 
-            margin-top: -30px; /* Pulls marquee up to the hero */
+            margin-top: -30px; 
             backdrop-filter: blur(5px); 
         }
         .marquee-inner { display: flex; width: fit-content; animation: scrollText 30s linear infinite; }
