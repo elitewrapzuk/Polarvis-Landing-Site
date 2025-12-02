@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="theme-color" content="#02050a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <title>POLARVIS | Smarter Glass. Better Living.</title>
     
     <link rel="icon" href="favicon.PNG" type="image/png">
@@ -99,22 +103,24 @@
         /* --- 4. NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            padding: 12px 20px;
+            /* UPDATED PADDING: Increased to accommodate larger logo */
+            padding: 15px 20px;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            background: rgba(2, 5, 10, 0.7);
+            background: rgba(2, 5, 10, 0.8); /* Slightly darker opacity */
             box-sizing: border-box; 
         }
         
-        /* UPDATED: LOGO CSS */
+        /* UPDATED: LOGO SIZE */
         .brand-logo { 
             display: flex; 
             align-items: center; 
             text-decoration: none; 
         }
         .brand-logo img {
-            height: 35px; /* Perfect height for navbar */
+            /* INCREASED HEIGHT from 35px to 55px */
+            height: 55px; 
             width: auto;
             display: block;
         }
@@ -138,7 +144,7 @@
             align-items: center; 
             text-align: center; 
             /* Reduced bottom padding significantly */
-            padding: 100px 20px 40px; 
+            padding: 120px 20px 40px; /* Increased top padding slightly for larger nav */
             position: relative; 
         }
         
