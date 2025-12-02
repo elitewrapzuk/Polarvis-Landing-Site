@@ -50,7 +50,6 @@
             width: 100%;
             overscroll-behavior-x: none;
             touch-action: pan-y;
-            /* Ensures background covers the status bar area */
             background-color: var(--bg-dark);
         }
         
@@ -104,8 +103,7 @@
         /* --- 4. NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            /* SAFE AREA PADDING: This prevents the notch from covering your logo */
-            /* env() calculates the exact pixel height of the Notch area */
+            /* SAFE AREA PADDING */
             padding-top: max(15px, env(safe-area-inset-top));
             padding-bottom: 15px;
             padding-left: 20px;
@@ -139,16 +137,15 @@
         }
         .cta-btn:hover { background: var(--ice-blue); color: #000; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
 
-        /* --- 5. HERO (Updated Gap Settings) --- */
+        /* --- 5. HERO --- */
         .hero { 
-            /* 85vh height keeps content visible above fold */
             min-height: 85vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: center;
             align-items: center; 
             text-align: center; 
-            /* Extra top padding so content clears the status bar on mobile */
+            /* Extra top padding for mobile status bar */
             padding: 140px 20px 40px;
             position: relative; 
         }
@@ -304,7 +301,8 @@
 
         /* --- 11. FOOTER --- */
         .heritage-wrap { padding: 60px 20px; text-align: center; border-top: 1px solid var(--glass-border); background: linear-gradient(0deg, #000 0%, rgba(0, 81, 255, 0.05) 100%); }
-        .parent-brand { font-size: 2.5rem; font-weight: 900; color: #fff; margin-bottom: 20px; font-family: 'Rajdhani'; letter-spacing: 2px; }
+        /* Reduced Size for Elite Wrapz */
+        .parent-brand { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 20px; font-family: 'Rajdhani'; letter-spacing: 2px; }
         footer { padding: 40px 20px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #666; text-align: center; }
 
         /* Animations */
@@ -488,13 +486,13 @@
     <section class="heritage-wrap">
         <p style="color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Part of the Collective</p>
         <div class="parent-brand">ELITE WRAPZ</div>
-        <p style="max-width: 600px; margin: 0 auto; color: #888; line-height: 1.6;">Interior Surfaces & Architectural Glass.</p>
+        <p style="max-width: 600px; margin: 0 auto; color: #888; line-height: 1.6;">Interior Vinyl Wrap Solutions</p>
         <a href="https://www.elitewrapz.uk" target="_blank" style="display: inline-block; margin-top: 20px; color: white; border-bottom: 1px solid var(--ice-blue); text-decoration: none; padding-bottom: 5px;">Visit Elite Wrapz &rarr;</a>
     </section>
 
     <footer id="contact">
         <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
-            <a href="mailto:info@elitewrapz.uk" class="btn-glow" style="border-color: var(--ice-blue); color:white;">Email Us</a>
+            <a href="mailto:contact@polarvis.uk" class="btn-glow" style="border-color: var(--ice-blue); color:white;">Email Us</a>
         </div>
         <p>&copy; 2025 Polarvis. A Division of Elite Wrapz.</p>
     </footer>
