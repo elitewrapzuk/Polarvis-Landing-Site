@@ -50,11 +50,11 @@
             width: 100%;
             overscroll-behavior-x: none;
             touch-action: pan-y;
-            /* Ensures the dark color is behind the mobile status bar */
             background-color: var(--bg-dark);
         }
         
         body {
+            /* Background extends to top */
             background: radial-gradient(circle at top center, #0f1c2e, var(--bg-dark));
             color: var(--polar-white);
             font-family: 'Montserrat', sans-serif;
@@ -104,7 +104,7 @@
         /* --- 4. NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            /* SAFE AREA PADDING: Prevents notch overlap */
+            /* SAFE AREA PADDING: Prevents notch overlap on newer iPhones */
             padding-top: max(15px, env(safe-area-inset-top));
             padding-bottom: 15px;
             padding-left: 20px;
@@ -123,7 +123,7 @@
             text-decoration: none; 
         }
         .brand-logo img {
-            /* RECTANGULAR SIZE: Sleek */
+            /* RECTANGULAR SIZE: Set to 40px for sleek look */
             height: 40px; 
             width: auto;
             display: block;
@@ -138,16 +138,15 @@
         }
         .cta-btn:hover { background: var(--ice-blue); color: #000; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
 
-        /* --- 5. HERO (Updated Gap Settings) --- */
+        /* --- 5. HERO --- */
         .hero { 
-            /* 85vh height keeps content visible above fold */
             min-height: 85vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: center;
             align-items: center; 
             text-align: center; 
-            /* Extra top padding so content clears the status bar on mobile */
+            /* Extra top padding ensures content clears the status bar */
             padding: 140px 20px 40px;
             position: relative; 
         }
@@ -303,7 +302,7 @@
 
         /* --- 11. FOOTER --- */
         .heritage-wrap { padding: 60px 20px; text-align: center; border-top: 1px solid var(--glass-border); background: linear-gradient(0deg, #000 0%, rgba(0, 81, 255, 0.05) 100%); }
-        /* Reduced Size for Elite Wrapz */
+        /* Reduced Size for Elite Wrapz (was 2.5rem) */
         .parent-brand { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 20px; font-family: 'Rajdhani'; letter-spacing: 2px; }
         footer { padding: 40px 20px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #666; text-align: center; }
 
