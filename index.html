@@ -13,7 +13,8 @@
     
     <meta name="geo.region" content="GB-BIR">
     <meta name="geo.placename" content="Birmingham">
-    <meta name="geo.position" content="52.4862; -1.8904"> <meta name="ICBM" content="52.4862, -1.8904">
+    <meta name="geo.position" content="52.4862; -1.8904">
+    <meta name="ICBM" content="52.4862, -1.8904">
 
     <meta property="og:site_name" content="POLARVIS UK">
     <meta property="og:title" content="POLARVIS | Smarter Glass. Better Living.">
@@ -88,7 +89,6 @@
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-secondary: #a0b3c6;
             --polar-gradient: linear-gradient(135deg, var(--ice-blue), var(--deep-ocean));
-            /* New gradient for icons */
             --icon-gradient: linear-gradient(135deg, var(--ice-blue), var(--aurora-purple));
             --easing: cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -163,19 +163,18 @@
         }
         .cta-btn:hover { background: var(--ice-blue); color: #000; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
 
-        /* --- 5. HERO --- */
+        /* --- 5. HERO (UPDATED GAP AND TEXT) --- */
         .hero { 
             min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
-            padding: 110px 20px 40px; position: relative; 
+            /* REDUCED TOP PADDING FROM 110px TO 90px */
+            padding: 90px 20px 30px; position: relative; 
         }
         .hero-tag { 
             margin-bottom: 25px; opacity: 0; animation: fadeUp 1s 0.5s forwards; 
             font-weight: 700; text-transform: uppercase;
-            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            display: flex; flex-direction: column; align-items: center; gap: 2px;
         }
         .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; opacity: 0; animation: fadeUp 1s 0.7s forwards; }
-        /* New style for local text in H1 */
-        .hero h1 .uk-text { font-size: 0.6em; display: block; margin-top: 10px; font-weight: 600; color: var(--text-secondary); }
         .hero p { font-size: 1.1rem; max-width: 500px; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.8; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
         .cta-container { opacity: 0; animation: fadeUp 1s 1.1s forwards; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;}
         
@@ -204,21 +203,20 @@
         .concept-box.vis h3 { color: var(--deep-ocean); }
         @media (max-width: 768px) { .split-concept { grid-template-columns: 1fr; border: none; } .concept-box { border-left: 2px solid var(--glass-border); } }
 
-        /* --- 8. CARDS (CLICKABLE & WITH ICONS) --- */
+        /* --- 8. CARDS --- */
         .collection-section { padding: 80px 20px; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .tech-card { 
             background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
             border: 1px solid var(--glass-border); padding: 30px; border-radius: 15px; position: relative; overflow: hidden; transition: 0.4s var(--easing); 
             cursor: pointer;
-            display: flex; flex-direction: column; justify-content: flex-start; /* Align content to top */
+            display: flex; flex-direction: column; justify-content: flex-start;
         }
         .tech-card:hover { transform: translateY(-5px); border-color: var(--ice-blue); background: rgba(0, 242, 255, 0.05); }
-        /* New style for card icons */
         .card-icon {
             font-size: 2.5rem; margin-bottom: 20px;
             background: var(--icon-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            align-self: flex-start; /* Align icon to the left */
+            align-self: flex-start;
         }
         .tech-card h3 { font-size: 1.3rem; color: #fff; margin-bottom: 10px; }
         .tech-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
@@ -309,10 +307,11 @@
 
     <section class="hero">
         <div class="hero-tag">
-            <span style="font-size: 1rem; letter-spacing: 4px; color: var(--polar-white);">INTRODUCING POLARVIS</span>
+            <span style="font-size: 0.9rem; letter-spacing: 4px; color: var(--polar-white); opacity: 0.8;">INTRODUCING</span>
+            <span style="font-size: 1.8rem; letter-spacing: 6px; color: var(--polar-white); font-weight: 800; margin: 5px 0;">POLARVIS</span>
             <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--ice-blue); opacity: 0.9;">ARCHITECTURAL WINDOW FILM SPECIALISTS</span>
         </div>
-        <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span><span class="uk-text">in Birmingham & UK</span></h1>
+        <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span></h1>
         <p>The definitive solution for heat reduction, privacy, and safety. Engineered for privacy, protection, and performance.</p>
         <div class="cta-container">
             <a href="#identity" class="btn-glow">Discover More</a>
@@ -451,27 +450,27 @@
         const modalData = {
             'solar': {
                 title: "Solar Control Film",
-                img: "solar.WEBP", // Ensure this matches your GitHub file exactly
+                img: "solar.WEBP",
                 desc: "Our solar control films are designed to reject up to 82% of solar heat, dramatically reducing cooling costs and improving comfort in conservatories, offices, and homes."
             },
             'privacy': {
                 title: "Privacy Window Film",
-                img: "privacy.PNG", // Ensure this matches your GitHub file exactly
+                img: "privacy.PNG",
                 desc: "Achieve complete privacy without sacrificing natural light. Choose from One-Way Mirror film (see out, no one sees in) or frosted options."
             },
             'decorative': {
                 title: "Decorative & Frosted",
-                img: "decorative.JPG", // Ensure this matches your GitHub file exactly
+                img: "decorative.JPG",
                 desc: "Transform plain glass into a design feature. We offer a wide range of frosted patterns, gradients, and custom manifestations."
             },
             'safety': {
                 title: "Safety & Security Film",
-                img: "safety.JPG", // Ensure this matches your GitHub file exactly
+                img: "safety.JPG",
                 desc: "Reinforce your glass against accidental breakage or forced entry. Our safety films hold shattered glass together, preventing injury."
             },
             'specialist': {
                 title: "Specialist Solutions",
-                img: "specialist.JPG", // Ensure this matches your GitHub file exactly
+                img: "specialist.JPG",
                 desc: "Advanced optical films like 'Data Jammer' (blacking out screens to outside viewers), Anti-Fog for mirrors/gyms, and Anti-Graffiti layers."
             }
         };
@@ -487,7 +486,7 @@
             title.innerText = modalData[type].title;
             desc.innerText = modalData[type].desc;
             img.src = modalData[type].img;
-            img.alt = modalData[type].title + " Example"; // SEO: Add alt text dynamically
+            img.alt = modalData[type].title + " Example";
             
             // Show
             overlay.style.display = 'flex';
@@ -526,5 +525,5 @@
             else text.innerText = "Data Hidden (View Clear)";
         }
     </script>
-    </body>
+</body>
 </html>
