@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
     <title>POLARVIS | Architectural Window Film Specialists | Birmingham & UK</title>
-    <meta name="description" content="Polarvis UK: Premier architectural window film specialists based in Birmingham. We supply and install solar control, privacy, safety, decorative, and Data Jammer films for residential and commercial properties across the UK.">
-    <meta name="keywords" content="window films Birmingham, home window films UK, privacy window film, solar control glass, data jammer film, anti-graffiti film, safety glass film, architectural vinyl installation, Polarvis, Elite Wrapz">
+    <meta name="description" content="Polarvis UK: Premier architectural window film specialists based in Birmingham. We supply and install solar control, privacy, safety, decorative, and Data Jammer films.">
+    <meta name="keywords" content="window films Birmingham, home window films UK, privacy window film, solar control glass, data jammer film, anti-graffiti film, safety glass film, architectural vinyl installation, Polarvis">
     <meta name="author" content="Polarvis UK">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://polarvis.uk/">
@@ -18,7 +18,7 @@
 
     <meta property="og:site_name" content="POLARVIS UK">
     <meta property="og:title" content="POLARVIS | Architectural Window Film Specialists">
-    <meta property="og:description" content="Transform your glass with our premium privacy, protection, and performance films. Specialist installers for Birmingham & the UK.">
+    <meta property="og:description" content="Transform your glass with our premium privacy, protection, and performance films.">
     <meta property="og:image" content="https://polarvis.uk/logo.PNG">
     <meta property="og:url" content="https://polarvis.uk/">
     <meta property="og:type" content="website">
@@ -30,7 +30,6 @@
     <link rel="icon" href="favicon.PNG" type="image/png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script type="application/ld+json">
@@ -41,29 +40,17 @@
       "url": "https://polarvis.uk/",
       "logo": "https://polarvis.uk/logo.PNG",
       "description": "Polarvis UK is a leading specialist in architectural window film solutions in Birmingham.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Birmingham",
-        "addressCountry": "GB"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "contact@polarvis.uk",
-        "contactType": "sales"
-      }
+      "address": { "@type": "PostalAddress", "addressLocality": "Birmingham", "addressCountry": "GB" },
+      "contactPoint": { "@type": "ContactPoint", "email": "contact@polarvis.uk", "contactType": "sales" }
     }
     </script>
     
     <style>
         /* --- 1. CORE VARIABLES --- */
         :root {
-            --ice-blue: #00f2ff;
-            --deep-ocean: #0051ff;
-            --aurora-purple: #7000ff;
-            --polar-white: #ffffff;
-            --security-red: #ff2a2a; 
-            --bg-dark: #02050a;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --ice-blue: #00f2ff; --deep-ocean: #0051ff; --aurora-purple: #7000ff;
+            --polar-white: #ffffff; --security-red: #ff2a2a; 
+            --bg-dark: #02050a; --glass-border: rgba(255, 255, 255, 0.1);
             --text-secondary: #a0b3c6;
             --polar-gradient: linear-gradient(135deg, var(--ice-blue), var(--deep-ocean));
             --icon-gradient: linear-gradient(135deg, var(--ice-blue), var(--aurora-purple));
@@ -72,33 +59,22 @@
 
         html { scroll-behavior: smooth; }
         
-        body, html {
-            margin: 0; padding: 0;
-            overflow-x: hidden;
-            width: 100%;
-            overscroll-behavior-x: none;
-            touch-action: pan-y;
-            background-color: var(--bg-dark);
-        }
-        
         body {
+            margin: 0; padding: 0; overflow-x: hidden; width: 100%; 
             background: radial-gradient(circle at top center, #0f1c2e, var(--bg-dark));
-            color: var(--polar-white);
-            font-family: 'Montserrat', sans-serif;
-            cursor: default;
+            color: var(--polar-white); font-family: 'Montserrat', sans-serif; cursor: default;
+            /* Mobile Tap Highlight Fix */
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar { width: 6px; } 
+        ::-webkit-scrollbar-track { background: var(--bg-dark); } 
         ::-webkit-scrollbar-thumb { background: var(--deep-ocean); border-radius: 3px; }
 
         h1, h2, h3, h4, .tech-font { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
         
         .gradient-text {
-            background: var(--polar-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: var(--polar-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         /* --- 2. PRELOADER --- */
@@ -123,10 +99,12 @@
         @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 30px) scale(1.1); } }
         .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"); z-index: 0; pointer-events: none; }
 
-        /* --- 4. NAVIGATION --- */
+        /* --- 4. NAVIGATION (Mobile Safe Area) --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            padding-top: max(15px, env(safe-area-inset-top)); padding-bottom: 15px; padding-left: 20px; padding-right: 20px;
+            /* Ensures content doesn't hide behind notch */
+            padding-top: max(15px, env(safe-area-inset-top)); 
+            padding-bottom: 15px; padding-left: 20px; padding-right: 20px;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(2, 5, 10, 0.85); box-sizing: border-box; 
@@ -150,7 +128,8 @@
             font-weight: 700; text-transform: uppercase;
             display: flex; flex-direction: column; align-items: center; gap: 2px;
         }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; opacity: 0; animation: fadeUp 1s 0.7s forwards; }
+        /* Mobile Font Scaling */
+        .hero h1 { font-size: clamp(2.2rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; opacity: 0; animation: fadeUp 1s 0.7s forwards; }
         .hero h1 .uk-text { font-size: 0.6em; display: block; margin-top: 10px; font-weight: 600; color: var(--text-secondary); }
         .hero p { font-size: 1.1rem; max-width: 500px; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.8; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
         .cta-container { opacity: 0; animation: fadeUp 1s 1.1s forwards; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;}
@@ -178,9 +157,8 @@
         .concept-box p { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
         .concept-box.polar h3 { color: var(--ice-blue); }
         .concept-box.vis h3 { color: var(--deep-ocean); }
-        @media (max-width: 768px) { .split-concept { grid-template-columns: 1fr; border: none; } .concept-box { border-left: 2px solid var(--glass-border); } }
-
-        /* --- 8. 3D PHYSICS CARDS (MOBILE & DESKTOP) --- */
+        
+        /* --- 8. CARDS (Mobile Grid) --- */
         .collection-section { padding: 80px 20px; perspective: 2000px; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         
@@ -193,13 +171,9 @@
             cursor: pointer;
             display: flex; flex-direction: column; justify-content: flex-start;
             padding: 40px 30px;
-            
-            /* 3D Properties */
             transform-style: preserve-3d;
             transition: transform 0.1s ease, box-shadow 0.3s ease; 
         }
-
-        /* AUTO-HOLOGRAPHIC SHEEN */
         .tech-card::after {
             content: "";
             position: absolute;
@@ -208,19 +182,11 @@
             transform: skewX(-20deg);
             transition: none;
             pointer-events: none;
-            /* Shimmer Effect runs every 6 seconds */
             animation: holographicShimmer 6s infinite linear;
         }
-
-        @keyframes holographicShimmer {
-            0% { left: -150%; }
-            20% { left: 150%; } /* Fast pass */
-            100% { left: 150%; } /* Wait */
-        }
-
+        @keyframes holographicShimmer { 0% { left: -150%; } 20% { left: 150%; } 100% { left: 150%; } }
         .tech-card:hover { border-color: var(--ice-blue); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.1); }
 
-        /* Floating Content (Parallax) */
         .tech-card-content { transform: translateZ(20px); pointer-events: none; }
         .card-icon {
             font-size: 2.5rem; margin-bottom: 20px;
@@ -235,28 +201,21 @@
         .specialist-highlight .card-icon { background: linear-gradient(135deg, #ff2a2a, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .specialist-highlight:hover { border-color: var(--security-red); box-shadow: 0 15px 40px rgba(255, 42, 42, 0.15); }
 
-        /* ADVANCED QUIZ STYLES (NEW) */
-        #film-finder { padding: 100px 20px; background: linear-gradient(to bottom, #02050a, #051414); border-top: 1px solid rgba(255,255,255,0.05); }
-        #quiz-container { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px; min-height: 400px; position: relative; max-width: 800px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .quiz-step h3 { font-size: 1.8rem; margin-bottom: 30px; }
-        .quiz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
-        .quiz-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: white; padding: 20px; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 130px; text-transform: uppercase; letter-spacing: 1px; }
-        .quiz-btn i { font-size: 2rem; margin-bottom: 15px; color: var(--ice-blue); transition: 0.3s; }
+        /* --- 9. QUIZ (Mobile Spacing) --- */
+        #film-finder { padding: 80px 20px; background: linear-gradient(to bottom, #02050a, #051414); border-top: 1px solid rgba(255,255,255,0.05); }
+        #quiz-container { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; min-height: 400px; position: relative; max-width: 800px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .quiz-step h3 { font-size: 1.6rem; margin-bottom: 30px; }
+        .quiz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; }
+        .quiz-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: white; padding: 15px; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-family: 'Rajdhani', sans-serif; font-size: 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 110px; text-transform: uppercase; letter-spacing: 1px; }
+        .quiz-btn i { font-size: 1.8rem; margin-bottom: 10px; color: var(--ice-blue); transition: 0.3s; }
         .quiz-btn:hover { background: var(--ice-blue); color: #000; transform: translateY(-5px); border-color: var(--ice-blue); }
         .quiz-btn:hover i { color: #000; }
-        .quiz-btn.warning:hover { background: var(--security-red); border-color: var(--security-red); }
-        .quiz-btn.warning i { color: var(--security-red); }
-        .quiz-btn.warning:hover i { color: #000; }
-
-        /* --- 9. SOLUTIONS --- */
+        
+        /* --- 10. SOLUTIONS & VISUALIZER --- */
         .solutions-section { padding: 80px 20px; background: rgba(255,255,255,0.02); }
         .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .sol-item { text-align: center; }
-        .sol-item i { font-size: 2.5rem; color: var(--ice-blue); margin-bottom: 20px; opacity: 0.8; }
-        .sol-item h4 { margin-bottom: 10px; color: white; }
-        .sol-item p { font-size: 0.9rem; color: var(--text-secondary); }
-
-        /* --- 10. VISUALIZER --- */
+        .sol-item { text-align: center; } .sol-item i { font-size: 2.5rem; color: var(--ice-blue); margin-bottom: 20px; }
+        
         .simulator-section { padding: 80px 20px; position: relative; text-align: center; background: radial-gradient(circle at center, rgba(0, 242, 255, 0.03) 0%, transparent 70%); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
         .sim-wrapper { max-width: 900px; width: 100%; margin: 0 auto; aspect-ratio: 16 / 9; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid var(--security-red); background: #000; box-shadow: 0 0 30px rgba(255, 42, 42, 0.1); }
         .jammer-sim { width: 100%; height: 100%; position: absolute; top: 0; left: 0; overflow: hidden; }
@@ -276,35 +235,18 @@
         .parent-brand { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 20px; font-family: 'Rajdhani'; letter-spacing: 2px; }
         footer { padding: 40px 20px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #666; text-align: center; }
 
-        /* --- 12. MODAL SYSTEM --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 2000;
-            display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
-            backdrop-filter: blur(10px);
+        /* --- MOBILE OVERRIDES --- */
+        @media (max-width: 768px) { 
+            .split-concept { grid-template-columns: 1fr; border: none; }
+            .concept-box { border-left: 2px solid var(--glass-border); }
+            .hero { padding-top: 110px; }
+            #film-finder { padding: 60px 15px; }
+            #quiz-container { padding: 20px; }
+            .quiz-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
         }
-        .modal-overlay.active { opacity: 1; }
-        .modal-content {
-            background: #0f1c2e; border: 1px solid var(--ice-blue);
-            width: 90%; max-width: 600px; padding: 0; border-radius: 20px;
-            transform: scale(0.9); transition: transform 0.3s ease;
-            position: relative; overflow: hidden;
-        }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-        .modal-img { width: 100%; height: 250px; object-fit: cover; }
-        .modal-body { padding: 30px; text-align: left; }
-        .modal-body h3 { color: var(--ice-blue); margin-bottom: 10px; font-size: 1.8rem; }
-        .modal-body p { color: var(--text-secondary); line-height: 1.6; font-size: 1rem; }
-        .close-modal {
-            position: absolute; top: 15px; right: 15px;
-            background: rgba(0,0,0,0.5); border: none; color: white;
-            width: 35px; height: 35px; border-radius: 50%;
-            cursor: pointer; font-size: 1.2rem;
-        }
-
-        /* Animations */
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; box-shadow: 0 0 10px var(--ice-blue); } 100% { opacity: 0.5; } }
+        
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes holographicShimmer { 0% { left: -150%; } 20% { left: 150%; } 100% { left: 150%; } }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -325,14 +267,14 @@
         <a href="#" class="brand-logo">
             <img src="logo.PNG" alt="POLARVIS Logo">
         </a>
-        <a href="mailto:contact@polarvis.uk?subject=General%20Enquiry%20via%20Website" class="cta-btn">Get Quote</a>
+        <a href="mailto:contact@polarvis.uk?subject=Enquiry%20via%20Website" class="cta-btn">Get Quote</a>
     </nav>
 
     <section class="hero">
         <div class="hero-tag">
             <span style="font-size: 0.9rem; letter-spacing: 4px; color: var(--polar-white); opacity: 0.8;">INTRODUCING</span>
             <span style="font-size: 1.8rem; letter-spacing: 6px; color: var(--polar-white); font-weight: 800; margin: 5px 0;">POLARVIS</span>
-            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--ice-blue); opacity: 0.9;">WINDOW FILM SPECIALISTS</span>
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--ice-blue); opacity: 0.9;">ARCHITECTURAL WINDOW FILM SPECIALISTS</span>
         </div>
         <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span></h1>
         <p>The definitive solution for heat reduction, privacy, and safety. Engineered for privacy, protection, and performance.</p>
@@ -343,14 +285,7 @@
 
     <div class="marquee-wrap">
         <div class="marquee-inner">
-            <div class="marquee-item">SOLAR CONTROL <span class="dot"></span></div>
-            <div class="marquee-item">PRIVACY <span class="dot"></span></div>
-            <div class="marquee-item">DATA JAMMER <span class="dot"></span></div>
-            <div class="marquee-item">SAFETY <span class="dot"></span></div>
-            <div class="marquee-item">SPECIALIST <span class="dot"></span></div>
-            <div class="marquee-item">SOLAR CONTROL <span class="dot"></span></div>
-            <div class="marquee-item">PRIVACY <span class="dot"></span></div>
-            <div class="marquee-item">DATA JAMMER <span class="dot"></span></div>
+            <div class="marquee-item">SOLAR CONTROL <span class="dot"></span></div><div class="marquee-item">PRIVACY <span class="dot"></span></div><div class="marquee-item">DATA JAMMER <span class="dot"></span></div><div class="marquee-item">SAFETY <span class="dot"></span></div><div class="marquee-item">SPECIALIST <span class="dot"></span></div><div class="marquee-item">SOLAR CONTROL <span class="dot"></span></div><div class="marquee-item">PRIVACY <span class="dot"></span></div><div class="marquee-item">DATA JAMMER <span class="dot"></span></div>
         </div>
     </div>
 
@@ -419,62 +354,16 @@
     <section class="collection-section" id="films">
         <div style="text-align: center; margin-bottom: 50px;">
             <h2 style="font-size: 2.5rem;">Core Technologies</h2>
-            <p style="color:var(--text-secondary); max-width: 600px; margin: 10px auto 0;">Click on a service to learn more.</p>
+            <p style="color:var(--text-secondary);">Click cards to explore details.</p>
         </div>
         <div class="card-grid">
-            <div class="tech-card" onclick="openModal('solar')">
-                <i class="fa-solid fa-temperature-arrow-down card-icon"></i>
-                <div class="tech-card-content">
-                    <h3>Solar Control</h3>
-                    <p>Reflects solar energy before it enters your room. Perfect for conservatories, offices, and south-facing windows.</p>
-                </div>
-            </div>
-            
-            <div class="tech-card" onclick="openModal('privacy')">
-                <i class="fa-solid fa-eye-slash card-icon"></i>
-                <div class="tech-card-content">
-                    <h3>Privacy</h3>
-                    <p>One-way mirror or frosted finishes. See out during the day while stopping others from seeing in.</p>
-                </div>
-            </div>
-
-            <div class="tech-card" onclick="openModal('decorative')">
-                <i class="fa-solid fa-wand-magic-sparkles card-icon"></i>
-                <div class="tech-card-content">
-                    <h3>Decorative</h3>
-                    <p>Frosted patterns, manifestations, and textured films. Transform glass partitions in offices.</p>
-                </div>
-            </div>
-
-            <div class="tech-card" onclick="openModal('safety')">
-                <i class="fa-solid fa-shield-halved card-icon"></i>
-                <div class="tech-card-content">
-                    <h3>Safety</h3>
-                    <p>Thick, optically clear films that hold glass together upon impact. Prevents shattering.</p>
-                </div>
-            </div>
-
-            <div class="tech-card specialist-highlight" onclick="openModal('specialist')">
-                <i class="fa-solid fa-fingerprint card-icon"></i>
-                <div class="tech-card-content">
-                    <h3>Specialist</h3>
-                    <p>High-tech solutions like Data Jammer, Anti-Fog, and Anti-Graffiti technology.</p>
-                </div>
-            </div>
+            <div class="tech-card" onclick="window.location.href='solar-control.html'"><i class="fa-solid fa-temperature-arrow-down card-icon"></i><div class="tech-card-content"><h3>Solar Control</h3><p>Heat rejection & glare reduction.</p></div></div>
+            <div class="tech-card" onclick="window.location.href='privacy-film.html'"><i class="fa-solid fa-eye-slash card-icon"></i><div class="tech-card-content"><h3>Privacy</h3><p>One-way mirror & frosted solutions.</p></div></div>
+            <div class="tech-card" onclick="window.location.href='decorative-film.html'"><i class="fa-solid fa-wand-magic-sparkles card-icon"></i><div class="tech-card-content"><h3>Decorative</h3><p>Coloured vinyls & patterns.</p></div></div>
+            <div class="tech-card" onclick="window.location.href='safety-film.html'"><i class="fa-solid fa-shield-halved card-icon"></i><div class="tech-card-content"><h3>Safety</h3><p>Reinforced glass protection.</p></div></div>
+            <div class="tech-card specialist-highlight" onclick="window.location.href='specialist-film.html'"><i class="fa-solid fa-fingerprint card-icon"></i><div class="tech-card-content"><h3>Specialist</h3><p>Data Jammer & Anti-Graffiti.</p></div></div>
         </div>
     </section>
-
-    <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal(event, true)" aria-label="Close modal">&times;</button>
-            <img src="" alt="Service Detail" class="modal-img" id="modal-img">
-            <div class="modal-body">
-                <h3 id="modal-title">Service Title</h3>
-                <p id="modal-desc">Service description goes here.</p>
-                <a href="mailto:contact@polarvis.uk?subject=Enquiry" class="btn-glow" style="display:inline-block; margin-top:20px; font-size:0.8rem; padding: 10px 20px;">Enquire Now</a>
-            </div>
-        </div>
-    </div>
 
     <section class="solutions-section">
         <div style="text-align: center;">
@@ -520,7 +409,7 @@
 
     <footer id="contact">
         <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
-            <a href="mailto:contact@polarvis.uk?subject=General%20Enquiry%20via%20Website" class="btn-glow" style="border-color: var(--ice-blue); color:white;">Email Us</a>
+            <a href="mailto:contact@polarvis.uk?subject=General%20Enquiry" class="btn-glow" style="border-color: var(--ice-blue); color:white;">Email Us</a>
         </div>
         <p>&copy; 2025 Polarvis. A Division of Elite Wrapz.</p>
     </footer>
@@ -595,7 +484,7 @@
                 options = [
                     { txt: "Accidental Breakage", icon: "fa-child", val: "shatter" },
                     { txt: "Vandalism / Graffiti", icon: "fa-spray-can", val: "graffiti" },
-                    { txt: "Forced Entry / Security", icon: "fa-lock", val: "security" }
+                    { txt: "Forced Entry", icon: "fa-lock", val: "security" }
                 ];
             }
             else if (goal === 'data') {
@@ -645,22 +534,10 @@
             document.getElementById('result-desc').innerText = desc;
             document.getElementById('result-img').src = img;
             
-            // --- NEW EMAIL LOGIC (UPDATED) ---
+            // Dynamic Subject Line
             const propType = quizState[1] === 'home' ? "Residential" : "Commercial";
-            
-            // 1. Subject Line
             const subject = `Quote Request: ${title} (${propType})`;
-            
-            // 2. Body Text (using backticks for new lines)
-            const bodyContent = `Hi Team,
-
-I matched with ${title} on your quiz for a ${propType} property.
-
-I'll add details/images below:
-`;
-            
-            // 3. Encode & Update Link
-            document.getElementById('result-btn').href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`;
+            document.getElementById('result-btn').href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(subject)}`;
 
             showStep('result');
         }
@@ -671,106 +548,28 @@ I'll add details/images below:
             showStep(1);
         }
 
-        // --- DATA FOR MODALS (WITH YOUR FILE TYPES) ---
-        const modalData = {
-            'solar': {
-                title: "Solar Control Film",
-                img: "solar.WEBP", // Uppercase .WEBP
-                desc: "Our solar control films are designed to reject up to 82% of solar heat, dramatically reducing cooling costs and improving comfort in conservatories, offices, and homes."
-            },
-            'privacy': {
-                title: "Privacy Window Film",
-                img: "privacy.PNG", // Uppercase .PNG
-                desc: "Achieve complete privacy without sacrificing natural light. Choose from One-Way Mirror film (see out, no one sees in) or frosted options."
-            },
-            'decorative': {
-                title: "Decorative & Frosted",
-                img: "decorative.JPG", // Uppercase .JPG
-                desc: "Transform plain glass into a design feature. We offer a wide range of frosted patterns, gradients, and custom manifestations."
-            },
-            'safety': {
-                title: "Safety & Security Film",
-                img: "safety.JPG", // Uppercase .JPG
-                desc: "Reinforce your glass against accidental breakage or forced entry. Our safety films hold shattered glass together, preventing injury."
-            },
-            'specialist': {
-                title: "Specialist Solutions",
-                img: "specialist.JPG", // Uppercase .JPG
-                desc: "Advanced optical films like 'Data Jammer' (blacking out screens to outside viewers), Anti-Fog for mirrors/gyms, and Anti-Graffiti layers."
-            }
-        };
-
-        // --- 3D PHYSICS ENGINE (MOUSE + TOUCH) ---
+        // --- 3D TILT ---
         const cards = document.querySelectorAll('.tech-card');
-
         function handleMove(e, card) {
             const rect = card.getBoundingClientRect();
-            // Supports both mouse and touch events
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-            const x = clientX - rect.left;
-            const y = clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -10; 
-            const rotateY = ((x - centerX) / centerX) * 10;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            const x = clientX - rect.left; const y = clientY - rect.top;
+            const cx = rect.width/2; const cy = rect.height/2;
+            card.style.transform = `perspective(1000px) rotateX(${((y-cy)/cy)*-10}deg) rotateY(${((x-cx)/cx)*10}deg) scale3d(1.02,1.02,1.02)`;
         }
-
-        function handleReset(card) {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-        }
-
-        cards.forEach(card => {
-            // Mouse (Desktop)
-            card.addEventListener('mousemove', (e) => handleMove(e, card));
-            card.addEventListener('mouseleave', () => handleReset(card));
-
-            // Touch (Mobile)
-            card.addEventListener('touchmove', (e) => handleMove(e, card), { passive: true });
-            card.addEventListener('touchend', () => handleReset(card));
+        function handleReset(card) { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)'; }
+        
+        cards.forEach(c => {
+            c.addEventListener('mousemove', e => handleMove(e, c));
+            c.addEventListener('mouseleave', () => handleReset(c));
+            c.addEventListener('touchmove', e => handleMove(e, c), {passive:true});
+            c.addEventListener('touchend', () => handleReset(c));
         });
 
-        // --- MODAL LOGIC ---
-        function openModal(type) {
-            const overlay = document.getElementById('modal-overlay');
-            const title = document.getElementById('modal-title');
-            const desc = document.getElementById('modal-desc');
-            const img = document.getElementById('modal-img');
-            
-            title.innerText = modalData[type].title;
-            desc.innerText = modalData[type].desc;
-            img.src = modalData[type].img;
-            img.alt = modalData[type].title + " Example";
-            
-            overlay.style.display = 'flex';
-            setTimeout(() => { overlay.classList.add('active'); }, 10);
-        }
-
-        function closeModal(e, force = false) {
-            if (e.target.id === 'modal-overlay' || force) {
-                const overlay = document.getElementById('modal-overlay');
-                overlay.classList.remove('active');
-                setTimeout(() => { overlay.style.display = 'none'; }, 300);
-            }
-        }
-
-        // --- LOADER ---
+        // --- PRELOADER ---
         window.addEventListener('load', () => {
-            const loader = document.getElementById('preloader');
-            if (sessionStorage.getItem('polarvis_intro_shown')) {
-                loader.style.display = 'none'; 
-            } else {
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    setTimeout(() => { loader.style.display = 'none'; }, 800);
-                    sessionStorage.setItem('polarvis_intro_shown', 'true');
-                }, 1500);
-            }
+            setTimeout(() => { document.getElementById('preloader').style.opacity = '0'; setTimeout(()=>document.getElementById('preloader').style.display='none', 800); }, 1000);
         });
 
         // --- SIMULATOR ---
