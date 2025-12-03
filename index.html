@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <title>POLARVIS | Architectural Window Film Specialists | Birmingham & UK</title>
+    <title>POLARVIS | Architectural Window Film Specialists</title>
     <meta name="description" content="Polarvis UK: Premier architectural window film specialists based in Birmingham. We supply and install solar control, privacy, safety, decorative, and Data Jammer films for residential and commercial properties across the UK.">
     <meta name="keywords" content="window films Birmingham, home window films UK, privacy window film, solar control glass, data jammer film, anti-graffiti film, safety glass film, architectural vinyl installation, Polarvis, Elite Wrapz">
     <meta name="author" content="Polarvis UK">
@@ -645,10 +645,22 @@
             document.getElementById('result-desc').innerText = desc;
             document.getElementById('result-img').src = img;
             
-            // Dynamic Subject Line
+            // --- NEW EMAIL LOGIC (UPDATED) ---
             const propType = quizState[1] === 'home' ? "Residential" : "Commercial";
+            
+            // 1. Subject Line
             const subject = `Quote Request: ${title} (${propType})`;
-            document.getElementById('result-btn').href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(subject)}`;
+            
+            // 2. Body Text (using backticks for new lines)
+            const bodyContent = `Hi Team,
+
+I matched with ${title} on your quiz for a ${propType} property.
+
+I'll add details/images below:
+`;
+            
+            // 3. Encode & Update Link
+            document.getElementById('result-btn').href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`;
 
             showStep('result');
         }
