@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
     <title>POLARVIS | Architectural Window Film Specialists | Birmingham & UK</title>
-    <meta name="description" content="Polarvis UK: The leading architectural window film specialists in Birmingham. Experts in home window films, privacy film, solar control, and Data Jammer installation.">
+    <meta name="description" content="Polarvis UK: Premier architectural window film specialists based in Birmingham. We supply and install solar control, privacy, safety, decorative, and Data Jammer films for residential and commercial properties across the UK.">
     <meta name="keywords" content="window films Birmingham, home window films UK, privacy window film, solar control glass, data jammer film, anti-graffiti film, safety glass film, architectural vinyl installation, Polarvis, Elite Wrapz">
     <meta name="author" content="Polarvis UK">
     <meta name="robots" content="index, follow">
@@ -16,9 +16,10 @@
     <meta name="geo.position" content="52.4862; -1.8904">
     <meta name="ICBM" content="52.4862, -1.8904">
 
+    <meta property="og:site_name" content="POLARVIS UK">
     <meta property="og:title" content="POLARVIS | Architectural Window Film Specialists">
-    <meta property="og:description" content="Transforming glass with privacy, protection, and performance. Serving Birmingham and the UK.">
-    <meta property="og:image" content="https://polarvis.uk/logo.PNG"> 
+    <meta property="og:description" content="Transform your glass with our premium privacy, protection, and performance films. Specialist installers for Birmingham & the UK.">
+    <meta property="og:image" content="https://polarvis.uk/logo.PNG">
     <meta property="og:url" content="https://polarvis.uk/">
     <meta property="og:type" content="website">
 
@@ -31,6 +32,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Polarvis UK",
+      "url": "https://polarvis.uk/",
+      "logo": "https://polarvis.uk/logo.PNG",
+      "description": "Polarvis UK is a leading specialist in architectural window film solutions in Birmingham.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Birmingham",
+        "addressCountry": "GB"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@polarvis.uk",
+        "contactType": "sales"
+      }
+    }
+    </script>
     
     <style>
         /* --- 1. CORE VARIABLES --- */
@@ -158,12 +180,12 @@
         .concept-box.vis h3 { color: var(--deep-ocean); }
         @media (max-width: 768px) { .split-concept { grid-template-columns: 1fr; border: none; } .concept-box { border-left: 2px solid var(--glass-border); } }
 
-        /* --- 8. 3D TILT CARDS (THE WOW FACTOR) --- */
-        .collection-section { padding: 80px 20px; perspective: 2000px; /* Essential for 3D */ }
+        /* --- 8. 3D PHYSICS CARDS (MOBILE & DESKTOP) --- */
+        .collection-section { padding: 80px 20px; perspective: 2000px; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         
         .tech-card { 
-            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
             border: 1px solid var(--glass-border); 
             border-radius: 20px; 
             position: relative; 
@@ -174,33 +196,37 @@
             
             /* 3D Properties */
             transform-style: preserve-3d;
-            transition: transform 0.1s ease, box-shadow 0.3s ease; /* Fast transform for physics */
+            transition: transform 0.1s ease, box-shadow 0.3s ease; 
         }
 
-        /* The Holographic Sheen */
+        /* AUTO-HOLOGRAPHIC SHEEN */
         .tech-card::after {
             content: "";
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(125deg, transparent 20%, rgba(255, 255, 255, 0.1) 30%, transparent 40%);
-            transform: translateY(100%);
-            transition: transform 0.5s;
+            top: 0; left: -100%; width: 200%; height: 100%;
+            background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 55%, transparent 70%);
+            transform: skewX(-20deg);
+            transition: none;
             pointer-events: none;
+            /* Shimmer Effect runs every 6 seconds */
+            animation: holographicShimmer 6s infinite linear;
         }
-        .tech-card:hover::after { transform: translateY(-100%); transition: transform 0.8s; }
+
+        @keyframes holographicShimmer {
+            0% { left: -150%; }
+            20% { left: 150%; } /* Fast pass */
+            100% { left: 150%; } /* Wait */
+        }
+
         .tech-card:hover { border-color: var(--ice-blue); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.1); }
 
         /* Floating Content (Parallax) */
-        .tech-card-content {
-            transform: translateZ(20px); /* Lifts text off the card */
-            pointer-events: none; /* Passes clicks to card */
-        }
-
+        .tech-card-content { transform: translateZ(20px); pointer-events: none; }
         .card-icon {
             font-size: 2.5rem; margin-bottom: 20px;
             background: var(--icon-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             align-self: flex-start;
-            transform: translateZ(30px); /* Icon floats higher */
+            transform: translateZ(30px);
         }
         .tech-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; transform: translateZ(25px); }
         .tech-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; transform: translateZ(20px); }
@@ -295,7 +321,7 @@
             <span style="font-size: 1.8rem; letter-spacing: 6px; color: var(--polar-white); font-weight: 800; margin: 5px 0;">POLARVIS</span>
             <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--ice-blue); opacity: 0.9;">ARCHITECTURAL WINDOW FILM SPECIALISTS</span>
         </div>
-        <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span><span class="uk-text">in Birmingham & UK</span></h1>
+        <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span></h1>
         <p>The definitive solution for heat reduction, privacy, and safety. Engineered for privacy, protection, and performance.</p>
         <div class="cta-container">
             <a href="#identity" class="btn-glow">Discover More</a>
@@ -444,54 +470,64 @@
         const modalData = {
             'solar': {
                 title: "Solar Control Film",
-                img: "solar.WEBP", 
+                img: "solar.WEBP", // Uppercase extension
                 desc: "Our solar control films are designed to reject up to 82% of solar heat, dramatically reducing cooling costs and improving comfort in conservatories, offices, and homes."
             },
             'privacy': {
                 title: "Privacy Window Film",
-                img: "privacy.PNG", 
+                img: "privacy.PNG", // Uppercase extension
                 desc: "Achieve complete privacy without sacrificing natural light. Choose from One-Way Mirror film (see out, no one sees in) or frosted options."
             },
             'decorative': {
                 title: "Decorative & Frosted",
-                img: "decorative.JPG", 
+                img: "decorative.JPG", // Uppercase extension
                 desc: "Transform plain glass into a design feature. We offer a wide range of frosted patterns, gradients, and custom manifestations."
             },
             'safety': {
                 title: "Safety & Security Film",
-                img: "safety.JPG", 
+                img: "safety.JPG", // Uppercase extension
                 desc: "Reinforce your glass against accidental breakage or forced entry. Our safety films hold shattered glass together, preventing injury."
             },
             'specialist': {
                 title: "Specialist Solutions",
-                img: "specialist.JPG", 
+                img: "specialist.JPG", // Uppercase extension
                 desc: "Advanced optical films like 'Data Jammer' (blacking out screens to outside viewers), Anti-Fog for mirrors/gyms, and Anti-Graffiti layers."
             }
         };
 
-        // --- 3D TILT LOGIC (THE MAGIC) ---
+        // --- 3D PHYSICS ENGINE (MOUSE + TOUCH) ---
         const cards = document.querySelectorAll('.tech-card');
 
+        function handleMove(e, card) {
+            const rect = card.getBoundingClientRect();
+            // Supports both mouse and touch events
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -10; 
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        }
+
+        function handleReset(card) {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        }
+
         cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                // Calculate center
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                // Calculate rotation (Max tilt 15deg)
-                const rotateX = ((y - centerY) / centerY) * -10; // Inverted Y for natural feel
-                const rotateY = ((x - centerX) / centerX) * 10;
+            // Mouse (Desktop)
+            card.addEventListener('mousemove', (e) => handleMove(e, card));
+            card.addEventListener('mouseleave', () => handleReset(card));
 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-            });
+            // Touch (Mobile)
+            card.addEventListener('touchmove', (e) => handleMove(e, card), { passive: true });
+            card.addEventListener('touchend', () => handleReset(card));
         });
 
         // --- MODAL LOGIC ---
