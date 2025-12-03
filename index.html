@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <title>POLARVIS | Architectural Window Films | Birmingham & UK</title>
+    <title>POLARVIS | Architectural Window Film Specialists | Birmingham & UK</title>
     <meta name="description" content="Polarvis UK: Premier architectural window film specialists based in Birmingham. We supply and install solar control, privacy, safety, decorative, and Data Jammer films.">
     <meta name="keywords" content="window films Birmingham, home window films UK, privacy window film, solar control glass, data jammer film, anti-graffiti film, safety glass film, architectural vinyl installation, Polarvis">
     <meta name="author" content="Polarvis UK">
@@ -57,14 +57,20 @@
             --easing: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            background-color: var(--bg-dark); /* VITAL FIX: Forces dark background on overscroll */
+            height: 100%;
+        }
         
         body {
             margin: 0; padding: 0; overflow-x: hidden; width: 100%; 
+            background-color: var(--bg-dark); /* Fallback */
             background: radial-gradient(circle at top center, #0f1c2e, var(--bg-dark));
+            background-attachment: fixed; /* Keeps gradient fixed so it doesn't run out */
             color: var(--polar-white); font-family: 'Montserrat', sans-serif; cursor: default;
-            /* Mobile Tap Highlight Fix */
             -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
         }
 
         ::-webkit-scrollbar { width: 6px; } 
@@ -99,10 +105,9 @@
         @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 30px) scale(1.1); } }
         .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"); z-index: 0; pointer-events: none; }
 
-        /* --- 4. NAVIGATION (Mobile Safe Area) --- */
+        /* --- 4. NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            /* Ensures content doesn't hide behind notch */
             padding-top: max(15px, env(safe-area-inset-top)); 
             padding-bottom: 15px; padding-left: 20px; padding-right: 20px;
             display: flex; justify-content: space-between; align-items: center;
@@ -121,14 +126,13 @@
         /* --- 5. HERO --- */
         .hero { 
             min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
-            padding: 90px 20px 30px; position: relative; 
+            padding: 100px 20px 40px; position: relative; 
         }
         .hero-tag { 
             margin-bottom: 25px; opacity: 0; animation: fadeUp 1s 0.5s forwards; 
             font-weight: 700; text-transform: uppercase;
             display: flex; flex-direction: column; align-items: center; gap: 2px;
         }
-        /* Mobile Font Scaling */
         .hero h1 { font-size: clamp(2.2rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 30px; opacity: 0; animation: fadeUp 1s 0.7s forwards; }
         .hero h1 .uk-text { font-size: 0.6em; display: block; margin-top: 10px; font-weight: 600; color: var(--text-secondary); }
         .hero p { font-size: 1.1rem; max-width: 500px; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.8; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
@@ -158,7 +162,7 @@
         .concept-box.polar h3 { color: var(--ice-blue); }
         .concept-box.vis h3 { color: var(--deep-ocean); }
         
-        /* --- 8. CARDS (Mobile Grid) --- */
+        /* --- 8. CARDS --- */
         .collection-section { padding: 80px 20px; perspective: 2000px; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         
@@ -175,13 +179,9 @@
             transition: transform 0.1s ease, box-shadow 0.3s ease; 
         }
         .tech-card::after {
-            content: "";
-            position: absolute;
-            top: 0; left: -100%; width: 200%; height: 100%;
+            content: ""; position: absolute; top: 0; left: -100%; width: 200%; height: 100%;
             background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 55%, transparent 70%);
-            transform: skewX(-20deg);
-            transition: none;
-            pointer-events: none;
+            transform: skewX(-20deg); transition: none; pointer-events: none;
             animation: holographicShimmer 6s infinite linear;
         }
         @keyframes holographicShimmer { 0% { left: -150%; } 20% { left: 150%; } 100% { left: 150%; } }
@@ -191,8 +191,7 @@
         .card-icon {
             font-size: 2.5rem; margin-bottom: 20px;
             background: var(--icon-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            align-self: flex-start;
-            transform: translateZ(30px);
+            align-self: flex-start; transform: translateZ(30px);
         }
         .tech-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; transform: translateZ(25px); }
         .tech-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; transform: translateZ(20px); }
@@ -201,7 +200,7 @@
         .specialist-highlight .card-icon { background: linear-gradient(135deg, #ff2a2a, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .specialist-highlight:hover { border-color: var(--security-red); box-shadow: 0 15px 40px rgba(255, 42, 42, 0.15); }
 
-        /* --- 9. QUIZ (Mobile Spacing) --- */
+        /* --- 9. QUIZ --- */
         #film-finder { padding: 80px 20px; background: linear-gradient(to bottom, #02050a, #051414); border-top: 1px solid rgba(255,255,255,0.05); }
         #quiz-container { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; min-height: 400px; position: relative; max-width: 800px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .quiz-step h3 { font-size: 1.6rem; margin-bottom: 30px; }
@@ -211,7 +210,7 @@
         .quiz-btn:hover { background: var(--ice-blue); color: #000; transform: translateY(-5px); border-color: var(--ice-blue); }
         .quiz-btn:hover i { color: #000; }
         
-        /* --- 10. SOLUTIONS & VISUALIZER --- */
+        /* --- 10. FOOTER & UTILS --- */
         .solutions-section { padding: 80px 20px; background: rgba(255,255,255,0.02); }
         .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         .sol-item { text-align: center; } .sol-item i { font-size: 2.5rem; color: var(--ice-blue); margin-bottom: 20px; }
@@ -230,18 +229,14 @@
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: var(--security-red); cursor: pointer; margin-top: -12px; box-shadow: 0 0 10px var(--security-red); }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #555; border-radius: 2px; }
 
-        /* --- 11. FOOTER --- */
         .heritage-wrap { padding: 60px 20px; text-align: center; border-top: 1px solid var(--glass-border); background: linear-gradient(0deg, #000 0%, rgba(0, 81, 255, 0.05) 100%); }
         .parent-brand { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 20px; font-family: 'Rajdhani'; letter-spacing: 2px; }
         footer { padding: 40px 20px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #666; text-align: center; }
 
-        /* --- MOBILE OVERRIDES --- */
         @media (max-width: 768px) { 
             .split-concept { grid-template-columns: 1fr; border: none; }
             .concept-box { border-left: 2px solid var(--glass-border); }
             .hero { padding-top: 110px; }
-            #film-finder { padding: 60px 15px; }
-            #quiz-container { padding: 20px; }
             .quiz-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
         }
         
@@ -258,15 +253,11 @@
         <div class="loader-text">INITIALIZING SYSTEMS</div>
     </div>
 
-    <div class="ambient-canvas">
-        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
-    </div>
+    <div class="ambient-canvas"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
     <div class="noise-overlay"></div>
 
     <nav>
-        <a href="#" class="brand-logo">
-            <img src="logo.PNG" alt="POLARVIS Logo">
-        </a>
+        <a href="#" class="brand-logo"><img src="logo.PNG" alt="POLARVIS Logo"></a>
         <a href="mailto:contact@polarvis.uk?subject=Enquiry%20via%20Website" class="cta-btn">Get Quote</a>
     </nav>
 
@@ -274,7 +265,7 @@
         <div class="hero-tag">
             <span style="font-size: 0.9rem; letter-spacing: 4px; color: var(--polar-white); opacity: 0.8;">INTRODUCING</span>
             <span style="font-size: 1.8rem; letter-spacing: 6px; color: var(--polar-white); font-weight: 800; margin: 5px 0;">POLARVIS</span>
-            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--ice-blue); opacity: 0.9;">ARCHITECTURAL WINDOW FILM SPECIALISTS</span>
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--ice-blue); opacity: 0.9; display: block; max-width: 80%; text-align: center;">ARCHITECTURAL WINDOW FILM SPECIALISTS</span>
         </div>
         <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span></h1>
         <p>The definitive solution for heat reduction, privacy, and safety. Engineered for privacy, protection, and performance.</p>
@@ -293,14 +284,8 @@
         <h2 style="font-size: 2rem; color: white; margin-bottom: 10px;">The Philosophy</h2>
         <div style="width: 50px; height: 3px; background: var(--ice-blue); margin: 0 auto 30px;"></div>
         <div class="split-concept">
-            <div class="concept-box polar">
-                <h3>POLAR</h3>
-                <p>Reflecting coolness, heat reduction, and environmental control. Just as the poles regulate the earth, our films regulate your interior climate.</p>
-            </div>
-            <div class="concept-box vis">
-                <h3>VIS</h3>
-                <p>Short for "Vision." Representing optical clarity, improved visibility, and the future of how we see through glass.</p>
-            </div>
+            <div class="concept-box polar"><h3>POLAR</h3><p>Reflecting coolness, heat reduction, and environmental control.</p></div>
+            <div class="concept-box vis"><h3>VIS</h3><p>Short for "Vision." Representing optical clarity and improved visibility.</p></div>
         </div>
     </section>
 
@@ -317,35 +302,31 @@
                         <button class="quiz-btn" onclick="nextStep(1, 'business')"><i class="fa-solid fa-building"></i>Business</button>
                     </div>
                 </div>
-
                 <div class="quiz-step" id="step-2" style="display:none; opacity:0; transition: opacity 0.5s;">
                     <h3 style="margin-bottom: 30px;">What is your main goal?</h3>
                     <div class="quiz-grid">
                         <button class="quiz-btn" onclick="nextStep(2, 'heat')"><i class="fa-solid fa-temperature-arrow-down"></i>Heat / Cold</button>
                         <button class="quiz-btn" onclick="nextStep(2, 'privacy')"><i class="fa-solid fa-eye-slash"></i>Privacy</button>
                         <button class="quiz-btn" onclick="nextStep(2, 'safety')"><i class="fa-solid fa-shield-halved"></i>Safety</button>
-                        <button class="quiz-btn" onclick="nextStep(2, 'decor')"><i class="fa-solid fa-wand-magic-sparkles"></i>Style / Decor</button>
+                        <button class="quiz-btn" onclick="nextStep(2, 'decor')"><i class="fa-solid fa-wand-magic-sparkles"></i>Decor</button>
                         <button class="quiz-btn commercial-only" id="btn-data" onclick="nextStep(2, 'data')" style="display:none;"><i class="fa-solid fa-user-secret"></i>Data Security</button>
                     </div>
                 </div>
-
                 <div class="quiz-step" id="step-3" style="display:none; opacity:0; transition: opacity 0.5s;">
-                    <h3 style="margin-bottom: 30px;" id="q3-text">Refine your choice:</h3>
-                    <div class="quiz-grid" id="q3-options">
-                        </div>
+                    <h3 style="margin-bottom: 30px;" id="q3-text">Refine:</h3>
+                    <div class="quiz-grid" id="q3-options"></div>
                 </div>
-
                 <div class="quiz-step" id="step-result" style="display:none; opacity:0; transition: opacity 0.5s;">
-                    <h3 style="color: var(--ice-blue); margin-bottom:10px;">Your Recommended Solution:</h3>
-                    <h2 id="result-title" style="font-size: 2.2rem; margin-bottom: 10px;">Film Name</h2>
-                    <p id="result-desc" style="color: #ccc; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6;">Description.</p>
+                    <h3 style="color: var(--ice-blue);">Recommended Film:</h3>
+                    <h2 id="result-title" style="font-size: 2rem; margin: 20px 0;">Film Name</h2>
+                    <p id="result-desc" style="color: #ccc; margin-bottom: 30px;"></p>
                     <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px; display: inline-block;">
                         <img id="result-img" src="" alt="Film Result" style="height: 180px; width: auto; border-radius: 5px;">
                     </div>
                     <br><br>
                     <a id="result-btn" href="#" class="btn-glow">Get Quote for this Film</a>
                     <br><br>
-                    <button onclick="resetQuiz()" style="background: none; border: none; color: #666; text-decoration: underline; cursor: pointer;">Start Over</button>
+                    <button onclick="resetQuiz()" style="background:none; border:none; color:#666; text-decoration:underline; cursor:pointer;">Start Over</button>
                 </div>
             </div>
         </div>
@@ -354,7 +335,7 @@
     <section class="collection-section" id="films">
         <div style="text-align: center; margin-bottom: 50px;">
             <h2 style="font-size: 2.5rem;">Core Technologies</h2>
-            <p style="color:var(--text-secondary);">Click cards to explore details.</p>
+            <p style="color:var(--text-secondary);">Click cards to explore full details.</p>
         </div>
         <div class="card-grid">
             <div class="tech-card" onclick="window.location.href='solar-control.html'"><i class="fa-solid fa-temperature-arrow-down card-icon"></i><div class="tech-card-content"><h3>Solar Control</h3><p>Heat rejection & glare reduction.</p></div></div>
@@ -415,140 +396,84 @@
     </footer>
 
     <script>
-        // --- 6-STEP LOGIC ENGINE ---
+        // QUIZ
         let quizState = {};
-
         function nextStep(step, val) {
             quizState[step] = val;
-            
-            const currentEl = document.getElementById(`step-${step}`);
-            currentEl.style.opacity = '0';
+            const el = document.getElementById(`step-${step}`);
+            el.style.opacity = '0';
             setTimeout(() => {
-                currentEl.style.display = 'none';
-                
+                el.style.display = 'none';
                 if (step === 1) {
-                    // Logic: Hide Data Jammer for Homeowners
-                    const dataBtn = document.getElementById('btn-data');
-                    if (dataBtn) dataBtn.style.display = (val === 'business') ? 'flex' : 'none';
+                    const d = document.getElementById('btn-data');
+                    if(d) d.style.display = (val === 'business') ? 'flex' : 'none';
                     showStep(2);
-                } 
-                else if (step === 2) {
-                    // Logic: Determine Question 3 based on Goal
-                    buildQ3(val);
-                }
-                else if (step === 3) {
-                    // Logic: Calculate Final Result
-                    calculateResult(val);
-                }
+                } else if (step === 2) { buildQ3(val); } 
+                else if (step === 3) { calculateResult(val); }
             }, 500);
         }
-
         function showStep(id) {
             const el = document.getElementById(`step-${id}`);
             el.style.display = 'block';
             setTimeout(() => el.style.opacity = '1', 50);
         }
-
         function buildQ3(goal) {
-            const q3Title = document.getElementById('q3-text');
-            const q3Opts = document.getElementById('q3-options');
-            q3Opts.innerHTML = ''; // Clear previous
-
-            let options = [];
-
+            const txt = document.getElementById('q3-text');
+            const box = document.getElementById('q3-options');
+            box.innerHTML = '';
+            let opts = [];
             if (goal === 'heat') {
-                q3Title.innerText = "Specific Heat Issue?";
-                options = [
-                    { txt: "Too Hot in Summer", icon: "fa-sun", val: "hot" },
-                    { txt: "Too Cold in Winter", icon: "fa-snowflake", val: "cold" },
-                    { txt: "Fading Furniture (UV)", icon: "fa-couch", val: "uv" },
-                    { txt: "I want Clear Glass", icon: "fa-droplet", val: "clear" }
-                ];
-            } 
-            else if (goal === 'privacy') {
-                q3Title.innerText = "When do you need privacy?";
-                options = [
-                    { txt: "Daytime Only (See Out)", icon: "fa-eye", val: "mirror" },
-                    { txt: "24/7 (Frosted/Opaque)", icon: "fa-eye-slash", val: "frosted" }
-                ];
-            } 
-            else if (goal === 'decor') {
-                q3Title.innerText = "Design Preference?";
-                options = [
-                    { txt: "Frosted / Etched", icon: "fa-gem", val: "frosted" },
-                    { txt: "Solid Colour / Branding", icon: "fa-paint-roller", val: "colour" }
-                ];
-            } 
-            else if (goal === 'safety') {
-                q3Title.innerText = "Primary Threat?";
-                options = [
-                    { txt: "Accidental Breakage", icon: "fa-child", val: "shatter" },
-                    { txt: "Vandalism / Graffiti", icon: "fa-spray-can", val: "graffiti" },
-                    { txt: "Forced Entry", icon: "fa-lock", val: "security" }
-                ];
-            }
-            else if (goal === 'data') {
-                // Skip Q3 for Data Jammer
-                calculateResult('data');
-                return;
-            }
-
-            // Render Buttons
-            options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'quiz-btn';
-                btn.onclick = () => nextStep(3, opt.val);
-                btn.innerHTML = `<i class="fa-solid ${opt.icon}"></i>${opt.txt}`;
-                q3Opts.appendChild(btn);
+                txt.innerText = "Specific Heat Issue?";
+                opts = [{t:"Too Hot (Summer)", i:"fa-sun", v:"hot"},{t:"Too Cold (Winter)", i:"fa-snowflake", v:"cold"},{t:"Fading Furniture (UV)", i:"fa-couch", v:"uv"},{t:"I want Clear Glass", i:"fa-droplet", v:"clear"}];
+            } else if (goal === 'privacy') {
+                txt.innerText = "Privacy Preference?";
+                opts = [{t:"Daytime Only (See Out)", i:"fa-eye", v:"mirror"},{t:"24/7 Total Privacy", i:"fa-eye-slash", v:"frosted"}];
+            } else if (goal === 'decor') {
+                txt.innerText = "Design Style?";
+                opts = [{t:"Frosted / Etched", i:"fa-gem", v:"frosted"},{t:"Solid Colour / Brand", i:"fa-paint-roller", v:"colour"}];
+            } else if (goal === 'safety') {
+                txt.innerText = "Primary Concern?";
+                opts = [{t:"Accidental Breakage", i:"fa-child", v:"shatter"},{t:"Vandalism / Graffiti", i:"fa-spray-can", v:"graffiti"},{t:"Forced Entry", i:"fa-lock", v:"security"}];
+            } else if (goal === 'data') { calculateResult('data'); return; }
+            
+            opts.forEach(o => {
+                const b = document.createElement('button');
+                b.className = 'quiz-btn';
+                b.onclick = () => nextStep(3, o.v);
+                b.innerHTML = `<i class="fa-solid ${o.i}"></i>${o.t}`;
+                box.appendChild(b);
             });
-
             showStep(3);
         }
-
-        function calculateResult(finalVal) {
-            let title, desc, img;
-
-            // --- MAPPING LOGIC (Solar Screen Products) ---
+        function calculateResult(val) {
+            let t, d, i;
+            if(val==='hot') { t="Solar Screen Silver 20"; d="Maximum heat rejection (80%) and glare reduction."; i="solar.WEBP"; }
+            else if(val==='cold') { t="Solar Screen MultiGlass 66 C (Low-E)"; d="Insulates windows: keeps heat out in summer, retains heat in winter."; i="solar.WEBP"; }
+            else if(val==='uv') { t="Solar Screen Museum Grade UV"; d="Blocks 99.9% of UV rays to stop fading without darkening the room."; i="solar.WEBP"; }
+            else if(val==='clear') { t="Solar Screen Spectra 80"; d="High-tech ceramic film. Rejects heat while remaining clear."; i="solar.WEBP"; }
+            else if(val==='mirror') { t="Solar Screen Vista 90"; d="One-way mirror effect. See out during the day, no one sees in."; i="privacy.PNG"; }
+            else if(val==='frosted') { t="Solar Screen Mat White"; d="Classic frosted privacy. Blocks vision day & night, lets light in."; i="decorative.JPG"; }
+            else if(val==='colour') { t="Architectural Coloured Vinyl"; d="Transform glass with solid colours or custom patterns."; i="decorative.JPG"; }
+            else if(val==='shatter') { t="Solar Screen Clear 4 C"; d="4-mil safety film. Holds glass together upon impact."; i="safety.JPG"; }
+            else if(val==='security') { t="Solar Screen Clear 8 C"; d="Heavy-duty 8-mil security film to deter break-ins."; i="safety.JPG"; }
+            else if(val==='graffiti') { t="Solar Screen AGI 100"; d="Anti-Graffiti sacrificial layer. Protects glass from scratches."; i="specialist.JPG"; }
+            else if(val==='data') { t="Solar Screen Data Jammer"; d="Screens appear black to onlookers while glass remains clear."; i="specialist.JPG"; }
             
-            // Heat / Solar
-            if (finalVal === 'hot') { title = "Solar Screen Silver 20"; desc = "Our most popular film for maximum heat rejection (80%) and glare reduction."; img = "solar.WEBP"; }
-            else if (finalVal === 'cold') { title = "Solar Screen MultiGlass 66 C (Low-E)"; desc = "Insulating film that keeps heat out in summer and retains heat in winter."; img = "solar.WEBP"; }
-            else if (finalVal === 'uv') { title = "Solar Screen Museum Grade UV"; desc = "Blocks 99.9% of UV rays to stop fading without darkening the room."; img = "solar.WEBP"; }
-            else if (finalVal === 'clear') { title = "Solar Screen Spectra 80"; desc = "High-tech ceramic film that blocks heat while remaining virtually invisible."; img = "solar.WEBP"; }
-            
-            // Privacy
-            else if (finalVal === 'mirror') { title = "Solar Screen Vista 90"; desc = "The ultimate one-way mirror film. See out during the day, no one sees in."; img = "privacy.PNG"; }
-            else if (finalVal === 'frosted') { title = "Solar Screen Mat White"; desc = "Classic frosted privacy. Lets light in but blocks all vision day and night."; img = "decorative.JPG"; }
-            
-            // Style
-            else if (finalVal === 'colour') { title = "Architectural Coloured Vinyl"; desc = "Transform glass with solid, vibrant brand colours or custom patterns."; img = "decorative.JPG"; }
-            
-            // Safety / Specialist
-            else if (finalVal === 'shatter') { title = "Solar Screen Clear 4 C"; desc = "4-mil safety film. Holds glass together upon impact to prevent injury."; img = "safety.JPG"; }
-            else if (finalVal === 'security') { title = "Solar Screen Clear 8 C"; desc = "Heavy-duty 8-mil security film to deter forced entry and break-ins."; img = "safety.JPG"; }
-            else if (finalVal === 'graffiti') { title = "Solar Screen AGI 100"; desc = "Anti-Graffiti sacrificial layer. Protects glass from scratches and paint."; img = "specialist.JPG"; }
-            else if (finalVal === 'data') { title = "Solar Screen Data Jammer"; desc = "Advanced polarization technology. Screens appear black to onlookers while glass remains clear."; img = "specialist.JPG"; }
-
-            // Display Result
-            document.getElementById('result-title').innerText = title;
-            document.getElementById('result-desc').innerText = desc;
-            document.getElementById('result-img').src = img;
-            
-            // Dynamic Subject Line
-            const propType = quizState[1] === 'home' ? "Residential" : "Commercial";
-            const subject = `Quote Request: ${title} (${propType})`;
-            document.getElementById('result-btn').href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(subject)}`;
-
+            document.getElementById('result-title').innerText = t;
+            document.getElementById('result-desc').innerText = d;
+            document.getElementById('result-img').src = i;
+            const type = quizState[1] === 'home' ? "Residential" : "Commercial";
+            const sub = `Quote Request: ${t} (${type})`;
+            document.getElementById('result-btn').href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(sub)}`;
             showStep('result');
         }
-
         function resetQuiz() {
             document.getElementById('step-result').style.display = 'none';
             document.getElementById('step-result').style.opacity = '0';
             showStep(1);
         }
 
-        // --- 3D TILT ---
+        // 3D TILT
         const cards = document.querySelectorAll('.tech-card');
         function handleMove(e, card) {
             const rect = card.getBoundingClientRect();
@@ -558,8 +483,7 @@
             const cx = rect.width/2; const cy = rect.height/2;
             card.style.transform = `perspective(1000px) rotateX(${((y-cy)/cy)*-10}deg) rotateY(${((x-cx)/cx)*10}deg) scale3d(1.02,1.02,1.02)`;
         }
-        function handleReset(card) { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)'; }
-        
+        function handleReset(card) { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)'; }
         cards.forEach(c => {
             c.addEventListener('mousemove', e => handleMove(e, c));
             c.addEventListener('mouseleave', () => handleReset(c));
@@ -567,12 +491,14 @@
             c.addEventListener('touchend', () => handleReset(c));
         });
 
-        // --- PRELOADER ---
+        // LOADERS
         window.addEventListener('load', () => {
-            setTimeout(() => { document.getElementById('preloader').style.opacity = '0'; setTimeout(()=>document.getElementById('preloader').style.display='none', 800); }, 1000);
+            const loader = document.getElementById('preloader');
+            if (sessionStorage.getItem('polarvis_intro_shown')) { loader.style.display = 'none'; } 
+            else { setTimeout(() => { loader.style.opacity = '0'; setTimeout(()=>document.getElementById('preloader').style.display='none', 800); sessionStorage.setItem('polarvis_intro_shown', 'true'); }, 1500); }
         });
 
-        // --- SIMULATOR ---
+        // SIMULATOR
         function updateSim(val) {
             const overlay = document.getElementById('jammerOverlay');
             const text = document.getElementById('jammerText');
