@@ -1,42 +1,433 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Solar Control Window Film Midlands | Heat Reduction | Polarvis UK</title>
-    <meta name="description" content="Expert installation of Solar Screen Silver 20 and Spectra 80 films. Reduce heat by 82% and lower energy bills.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.PNG" type="image/png">
-    <style>
-        :root { --bg-dark: #02050a; --ice-blue: #00f2ff; --text-sec: #a0b3c6; }
-        body { background: radial-gradient(circle at top center, #0f1c2e, var(--bg-dark)); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 40px 20px; text-align: center; }
-        h1, h2 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; margin-bottom: 20px; }
-        .container { max-width: 800px; margin: 0 auto; text-align: left; }
-        .back-link { color: var(--ice-blue); text-decoration: none; font-weight: bold; margin-bottom: 30px; display: inline-block; font-size: 1.1rem; }
-        .hero-img { width: 100%; height: 350px; object-fit: cover; border-radius: 20px; margin: 30px 0; border: 1px solid rgba(255,255,255,0.1); }
-        .btn-glow { background: transparent; border: 1px solid var(--ice-blue); color: white; padding: 15px 40px; text-decoration: none; display: inline-block; margin-top: 20px; font-family: 'Rajdhani'; letter-spacing: 2px; font-weight: bold; border-radius: 50px; transition: 0.3s; }
-        .btn-glow:hover { background: var(--ice-blue); color: #000; box-shadow: 0 0 20px rgba(0,242,255,0.4); }
-        li { margin-bottom: 15px; color: #ddd; line-height: 1.6; }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Solar Control Films | Polarvis UK</title>
+<meta name="description" content="Expert solar window films for heat reduction, glare control, and privacy.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  :root {
+    /* POLARVIS BRAND PALETTE */
+    --polar-dark: #0a1118;       
+    --polar-panel: #141e2a;      
+    --polar-primary: #0088cc;    
+    --polar-accent: #00d2ff;     
+    --polar-text: #ffffff;
+    --polar-muted: #8b9bb4;
+    --danger: #ff4757;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--polar-dark);
+    background-image: radial-gradient(circle at top right, #1a2a3d 0%, #0a1118 60%);
+    color: var(--polar-text);
+    margin: 0; padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+  p { line-height: 1.6; color: var(--polar-muted); }
+  
+  /* LAYOUT UTILS */
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .back-link {
+    color: var(--polar-accent); text-decoration: none; font-weight: 600;
+    font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;
+    margin-bottom: 30px; transition: 0.3s;
+  }
+  .back-link:hover { transform: translateX(-5px); }
+
+  /* HERO SECTION */
+  .hero-title {
+    font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+    background: linear-gradient(90deg, #fff, var(--polar-accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-img {
+    width: 100%; height: 300px; object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  /* INTRO TEXT */
+  .intro-text { margin-bottom: 50px; border-left: 3px solid var(--polar-primary); padding-left: 20px; }
+  .intro-text strong { color: white; }
+
+  /* SOLID BOX SOLUTION GRID */
+  .solution-box-container {
+    background: var(--polar-panel);
+    border: 1px solid var(--polar-primary);
+    border-radius: var(--radius);
+    padding: 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 30px rgba(0, 136, 204, 0.1);
+  }
+
+  .solution-header { text-align: center; margin-bottom: 30px; }
+  .solution-header h2 { margin: 0; font-size: 1.8rem; color: white; }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .solution-item { text-align: left; padding: 10px; }
+  .solution-item i { font-size: 1.8rem; color: var(--polar-accent); margin-bottom: 15px; display: block; }
+  .solution-item h3 { font-size: 1.1rem; color: white; margin-bottom: 10px; }
+  .solution-item p { font-size: 0.9rem; margin: 0; }
+
+  /* VLT SECTION */
+  .vlt-section { margin-bottom: 50px; }
+  .vlt-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 20px; margin-bottom: 15px;
+  }
+  .vlt-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .vlt-percent { font-family: 'Montserrat'; font-weight: 700; color: var(--polar-accent); font-size: 1.2rem; }
+  
+  /* UNSURE BANNER */
+  .unsure-banner {
+    text-align: center;
+    background: linear-gradient(90deg, rgba(0, 136, 204, 0.2) 0%, rgba(0,0,0,0) 100%);
+    border: 1px solid var(--polar-primary);
+    border-radius: var(--radius);
+    padding: 40px 20px;
+    margin-bottom: 60px;
+  }
+  .jump-btn {
+    display: inline-block; margin-top: 15px;
+    padding: 12px 30px; background: var(--polar-text); color: var(--polar-dark);
+    border-radius: 50px; font-weight: 700; text-decoration: none;
+    transition: 0.3s;
+  }
+  .jump-btn:hover { background: var(--polar-accent); }
+
+  /* QUIZ STYLES */
+  .quiz-wrapper {
+    width: 100%; 
+    background: rgba(20, 30, 42, 0.95);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(10px);
+    margin-bottom: 50px;
+  }
+  .header-quiz { padding: 40px 30px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .header-quiz h2 {
+    font-family: 'Montserrat', sans-serif; margin: 0; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 2px; font-size: 1.8rem;
+    background: linear-gradient(90deg, #fff, var(--polar-accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header-quiz p { color: var(--polar-muted); margin-top: 8px; font-size: 0.95rem; }
+  .content-area { padding: 30px; }
+  .step-container { display: none; animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+  .step-container.active { display: block; }
+  @keyframes slideUpFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .quiz-h3 { font-family: 'Montserrat', sans-serif; color: var(--polar-accent); margin-bottom: 25px; font-size: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* QUIZ BUTTONS */
+  .option-btn {
+    display: block; width: 100%; padding: 20px 25px; margin-bottom: 15px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); text-align: left; cursor: pointer; color: white;
+    transition: all 0.3s ease; position: relative; overflow: hidden;
+  }
+  .option-btn::before { content: ''; position: absolute; top:0; left:0; width: 4px; height: 100%; background: var(--polar-primary); opacity: 0; transition: 0.3s; }
+  .option-btn:hover { background: rgba(255,255,255,0.08); transform: translateX(5px); border-color: var(--polar-primary); box-shadow: 0 5px 20px rgba(0, 136, 204, 0.2); }
+  .option-btn:hover::before { opacity: 1; }
+  .option-btn strong { display: block; font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 4px; }
+  .option-btn small { color: var(--polar-muted); font-size: 0.9rem; font-weight: 300; }
+
+  /* RESULTS */
+  .result-card { text-align: center; background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.2) 100%); border: 1px solid var(--polar-primary); border-radius: var(--radius); padding: 30px; animation: glowPulse 3s infinite alternate; }
+  @keyframes glowPulse { from { box-shadow: 0 0 10px rgba(0,136,204,0.1); } to { box-shadow: 0 0 25px rgba(0,136,204,0.3); } }
+  .badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+  .badge-dark { background: #000; color: var(--polar-accent); border: 1px solid var(--polar-accent); }
+  .badge-light { background: rgba(255,255,255,0.1); color: #fff; }
+  .result-name { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; margin: 10px 0; background: linear-gradient(90deg, #fff, #bbb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .result-desc { color: #ccc; line-height: 1.6; margin-bottom: 30px; }
+  .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; }
+  .spec-item { text-align: left; }
+  .spec-item label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--polar-muted); margin-bottom: 5px; letter-spacing: 1px; }
+  .spec-item span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--polar-accent); }
+
+  .cta-btn { width: 100%; padding: 18px; background: linear-gradient(90deg, var(--polar-primary), #005f8f); border: none; border-radius: var(--radius); color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3); }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 136, 204, 0.5); }
+  .reset-link { display: block; margin-top: 20px; color: var(--polar-muted); background: none; border: none; cursor: pointer; text-decoration: underline; }
+  .notice-box { background: rgba(255, 193, 7, 0.1); border-left: 3px solid #ffc107; padding: 15px; text-align: left; margin-bottom: 20px; font-size: 0.9rem; color: #ffeeba; }
+
+  /* CLOSING FOOTER */
+  .closing-footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  @media (max-width: 480px) {
+    .header-quiz h2 { font-size: 1.4rem; }
+    .content-area { padding: 20px; }
+    .option-btn { padding: 15px 20px; }
+    .hero-title { font-size: 2rem; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-link">&larr; Back to Home</a>
-        <h1 style="font-size: 3rem; line-height: 1.1;">Solar Control Film <br><span style="color:var(--ice-blue)">Midlands & UK</span></h1>
-        <p style="color: var(--text-sec); font-size: 1.2rem; line-height: 1.6;">Excessive heat and glare can make your conservatory, office, or living room unusable. We install premium Solar Screen films like Silver 20 to reject up to 82% of solar energy.</p>
-        <img src="solar.WEBP" alt="Solar Control Window Film Installation" class="hero-img">
-        <h2>Why Choose Solar Film?</h2>
-        <ul style="font-size: 1.1rem;">
-            <li><strong>Heat Reduction (Silver 20):</strong> Provides instant relief from the sun's intensity.</li>
-            <li><strong>Insulation (MultiGlass 66 C):</strong> Keeps heat out in summer and retains heat in winter.</li>
-            <li><strong>Clear View (Spectra 80):</strong> Ceramic film that blocks heat while remaining invisible.</li>
-            <li><strong>UV Protection:</strong> Blocks 99.9% of UV rays to stop furniture fading.</li>
-        </ul>
-        <div style="text-align: center; margin-top: 60px; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
-            <h3>Ready to cool down your space?</h3>
-            <a href="mailto:contact@polarvis.uk?subject=Quote for Solar Control Film" class="btn-glow">Get A Quote</a>
-        </div>
+
+<div class="page-container">
+  
+  <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+  <h1 class="hero-title">Solar Window Film</h1>
+  <img src="solar.WEBP" alt="Solar Film Installation" class="hero-img">
+
+  <div class="intro-text">
+    <p><strong>What is solar window film?</strong><br>
+    Solar window film is a tough polyester sheet, treated with a number of proven processes to improve the appearance and performance of existing glazing. One side is coated with a scratch-resistant coating and the other with an adhesive so that the film conforms to the surface of the glass and becomes a true heat shield.</p>
+  </div>
+
+  <div class="solution-box-container">
+    <div class="solution-header">
+      <h2>A Film For Every Issue</h2>
     </div>
+    
+    <div class="solution-grid">
+      <div class="solution-item">
+        <i class="fa-solid fa-temperature-arrow-down"></i>
+        <h3>Heat & Glare Control</h3>
+        <p>If you're sitting comfortably on your sofa, the glare from the hot afternoon sun can be reflected on your TV screens. Solar window films block up to <strong>94% of glare</strong> and reduce the influx of heat.</p>
+      </div>
+      <div class="solution-item">
+        <i class="fa-solid fa-snowflake"></i>
+        <h3>Thermal Optimisation</h3>
+        <p>Films provide protection and thermal optimisation for windows and panes: better <strong>insulation in winter</strong> and a significant reduction in solar heat in summer.</p>
+      </div>
+      <div class="solution-item">
+        <i class="fa-solid fa-user-shield"></i>
+        <h3>Retain Privacy</h3>
+        <p>Don't draw the curtains and make the room dark! With <strong>mirror films</strong>, heat is rejected while regulating the view. You can't see in, but you can see out.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-bottom:20px;">Selecting the Right VLT</h2>
+  <p style="margin-bottom:30px;"><strong>VLT (Visible Light Transmission)</strong> determines how much light enters. Lower numbers = Darker film.</p>
+  
+  <div class="vlt-section">
+      <div class="vlt-card">
+          <div class="vlt-top">
+              <h3>High Light</h3>
+              <span class="vlt-percent">50% - 70%</span>
+          </div>
+          <p>Preserves natural light. Best for showrooms, retail, and north-facing rooms.</p>
+      </div>
+      <div class="vlt-card">
+          <div class="vlt-top">
+              <h3>Medium Balanced</h3>
+              <span class="vlt-percent">30% - 50%</span>
+          </div>
+          <p>The perfect balance between glare reduction and light. Ideal for offices and schools.</p>
+      </div>
+      <div class="vlt-card">
+          <div class="vlt-top">
+              <h3>Low Light / Privacy</h3>
+              <span class="vlt-percent">15% - 30%</span>
+          </div>
+          <p>Maximum heat rejection and glare control. Best for computer rooms and south-facing glass.</p>
+      </div>
+  </div>
+
+  <div class="unsure-banner">
+    <h2 style="color:white; margin-bottom:10px;">STILL UNSURE?</h2>
+    <p>Use our Film Finder below to get a technical recommendation.</p>
+    <a href="#quizArea" class="jump-btn">Start Film Finder <i class="fa-solid fa-arrow-down"></i></a>
+  </div>
+
+  <div class="quiz-wrapper" id="quizArea">
+    <div class="header-quiz">
+      <h2>POLARVIS INTELLIGENCE</h2>
+      <p>Advanced Solar Control Film Selector</p>
+    </div>
+
+    <div class="content-area">
+      <div class="step-container active" id="step1">
+        <h3 class="quiz-h3">Select Property Type</h3>
+        <button class="option-btn" onclick="nextStep(1,'home')"><strong>Residential</strong><small>Homes, Conservatories & Apartments</small></button>
+        <button class="option-btn" onclick="nextStep(1,'business')"><strong>Commercial</strong><small>Offices, Retail, Schools & Industrial</small></button>
+      </div>
+
+      <div class="step-container" id="step2">
+        <h3 class="quiz-h3">Window Material</h3>
+        <button class="option-btn" onclick="nextStep(2,'glass')"><strong>Glass</strong><small>Standard Double or Single Glazing</small></button>
+        <button class="option-btn" onclick="nextStep(2,'poly')"><strong>Plastic / Polycarbonate</strong><small>Roof panels, Skylights, Shelters</small></button>
+      </div>
+
+      <div class="step-container" id="step3">
+        <h3 class="quiz-h3">Primary Objective</h3>
+        <button class="option-btn" onclick="nextStep(3,'heat')"><strong>Heat Reduction</strong><small>Room is too hot</small></button>
+        <button class="option-btn" onclick="nextStep(3,'glare')"><strong>Glare Control</strong><small>Screens hard to read / Eye strain</small></button>
+        <button class="option-btn" onclick="nextStep(3,'insulation')"><strong>Thermal Insulation</strong><small>Room too cold in winter</small></button>
+        <button class="option-btn" onclick="nextStep(3,'uv')"><strong>UV Protection</strong><small>Stop fading of goods/furniture</small></button>
+      </div>
+
+      <div class="step-container" id="step4">
+        <h3 class="quiz-h3">Appearance Constraints</h3>
+        <button class="option-btn" onclick="nextStep(4,'no_change')"><strong>Keep it Neutral</strong><small>No mirrored or colored look</small></button>
+        <button class="option-btn" onclick="nextStep(4,'yes_change')"><strong>Change is Permitted</strong><small>Allows high-performance options</small></button>
+      </div>
+
+      <div class="step-container" id="step5">
+        <h3 class="quiz-h3">Preferred Aesthetic</h3>
+        <button class="option-btn" onclick="nextStep(5,'mirror')"><strong>Mirrored / Silver</strong><small>Best for Heat & Privacy</small></button>
+        <button class="option-btn" onclick="nextStep(5,'color')"><strong>Coloured Tint</strong><small>Bronze, Copper, Blue, Gold</small></button>
+      </div>
+
+      <div class="step-container" id="step6">
+        <h3 class="quiz-h3">Installation Preference</h3>
+        <button class="option-btn" onclick="nextStep(6,'internal')"><strong>Internal</strong><small>Applied to room side</small></button>
+        <button class="option-btn" onclick="nextStep(6,'external')"><strong>External</strong><small>Applied to outside (Max Performance)</small></button>
+        <button class="option-btn" onclick="nextStep(6,'unsure')"><strong>Expert Recommendation</strong><small>Safest & most effective choice</small></button>
+      </div>
+
+      <div class="step-container" id="step7">
+        <h3 class="quiz-h3">Glass Configuration</h3>
+        <button class="option-btn" onclick="nextStep(7,'single')"><strong>Single Pane Clear</strong><small>Older windows, partitions</small></button>
+        <button class="option-btn" onclick="nextStep(7,'double')"><strong>Double Pane Clear</strong><small>Standard modern glazing</small></button>
+        <button class="option-btn" onclick="nextStep(7,'complex')"><strong>Laminated / Tinted / Low-E</strong><small>Safety glass, Shop fronts, High efficiency</small></button>
+        <button class="option-btn" onclick="nextStep(7,'unsure')"><strong>Unsure</strong><small>I need help identifying this</small></button>
+      </div>
+
+      <div class="step-container" id="result-step">
+        <div id="result-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-footer">
+    <h2 style="font-size: 1.5rem; margin-bottom:15px;">Prefer to talk to a human?</h2>
+    <p style="margin-bottom:25px;">Our team is ready to provide personal advice and custom quotes.</p>
+    <a href="mailto:contact@polarvis.uk" class="cta-btn" style="display:inline-block; max-width:300px; text-decoration:none;">Contact Support</a>
+  </div>
+
+</div>
+
+<script>
+// --- MASTER DATA ---
+const films = [
+  { id: 'steel50', name: 'STEEL 50 C', type: 'neutral', location: 'internal', safeDouble: 1, vlt: 49, tser: 42, glare: 46, winter: false, desc: 'Neutral grey tint. Reduces glare without a mirror finish.', isDark: false },
+  { id: 'solar50', name: 'SOLAR 50 C', type: 'neutral', location: 'internal', safeDouble: 2, vlt: 60, tser: 56, glare: 41, winter: true, desc: 'Thermal insulation film. Retains winter heat.', isDark: false },
+  { id: 'solar80', name: 'SOLAR 80 C', type: 'mirror',  location: 'internal', safeDouble: 1, vlt: 15, tser: 82, glare: 83, winter: true, desc: 'High-performance thermal film. Strong insulation & privacy.', isDark: true },
+  { id: 'silver50', name: 'SILVER 50 C', type: 'mirror', location: 'internal', safeDouble: 2, vlt: 59, tser: 58, glare: 47, winter: false, desc: 'Light Silver. Balanced light & heat rejection.', isDark: false },
+  { id: 'silver80', name: 'SILVER 80 C', type: 'mirror', location: 'internal', safeDouble: 1, vlt: 23, tser: 80, glare: 80, winter: false, desc: 'Classic Silver Mirror. Max heat rejection.', isDark: true },
+  { id: 'bronze80', name: 'BRONZE 80 C', type: 'color', location: 'internal', safeDouble: 0, vlt: 12, tser: 76, glare: 91, winter: false, desc: 'Bronze finish. Highest glare reduction.', isDark: true },
+  { id: 'copper80', name: 'COPPER 80 C', type: 'color', location: 'internal', safeDouble: 1, vlt: 20, tser: 77, glare: 79, winter: false, desc: 'Warm Copper finish. High performance.', isDark: true },
+  { id: 'blue80',   name: 'BLUE 80 C',   type: 'color', location: 'internal', safeDouble: 0, vlt: 12, tser: 72, glare: 86, winter: false, desc: 'Modern Blue tint. High visual impact.', isDark: true },
+  { id: 'gold80',   name: 'GOLD 80 C',   type: 'color', location: 'internal', safeDouble: 1, vlt: 15, tser: 78, glare: 83, winter: false, desc: 'Gold Mirror. Statement look.', isDark: true },
+  { id: 'silver80xc', name: 'SILVER 80 XC', type: 'mirror', location: 'external', safeDouble: 2, vlt: 16, tser: 82, glare: 84, winter: false, desc: 'Heavy Duty Exterior Silver. Stops heat instantly.', isDark: true },
+  { id: 'silver44xc', name: 'SILVER 44 XC', type: 'mirror', location: 'external', safeDouble: 2, vlt: 52, tser: 56, glare: 44, winter: false, desc: 'Lighter Exterior Silver.', isDark: false },
+  { id: 'clarity245', name: 'CLARITY 245 XC', type: 'neutral', location: 'external', safeDouble: 2, vlt: 59, tser: 53, glare: 40, winter: false, desc: 'Neutral Exterior. Reduces heat naturally.', isDark: false },
+  { id: 'spectra333', name: 'SPECTRA 333 XC', type: 'invisible', location: 'external', safeDouble: 2, vlt: 75, tser: 56, glare: 29, winter: false, desc: 'Nano-Ceramic. Invisible heat reduction.', isDark: false }
+];
+
+let answers = {};
+const labels = {
+  'home':'Residential', 'business':'Commercial',
+  'glass':'Glass', 'poly':'Plastic/Polycarbonate',
+  'heat':'Heat Gain', 'glare':'Glare', 'insulation':'Insulation', 'uv':'UV/Fading',
+  'no_change':'Neutral (No Change)', 'yes_change':'Change Allowed',
+  'mirror':'Mirror', 'color':'Color',
+  'internal':'Internal', 'external':'External', 'unsure':'You Recommend',
+  'single':'Single Pane', 'double':'Double Pane', 'complex':'Tinted/Laminated'
+};
+
+function nextStep(step, value) {
+  if(step===1) answers.type = value;
+  if(step===2) answers.material = value;
+  if(step===3) answers.goal = value;
+  if(step===4) answers.aesthetics = value;
+  if(step===5) answers.style = value;
+  if(step===6) answers.location = value;
+  if(step===7) answers.glass = value;
+  document.getElementById('step'+step).classList.remove('active');
+  if (step === 2 && value === 'poly') { showResult('poly_stop'); return; }
+  if (step === 4 && value === 'no_change') {
+    document.getElementById('step6').classList.add('active');
+    answers.style = 'neutral';
+    return;
+  }
+  if (step < 7) { document.getElementById('step'+(step+1)).classList.add('active'); } 
+  else { calculateResult(); }
+}
+
+function calculateResult() {
+  if (answers.glass === 'unsure') { showResult('contact'); return; }
+  let forceExterior = (answers.glass === 'complex' || answers.location === 'external');
+  let candidates = films.filter(f => {
+    if (answers.glass === 'double' && f.location === 'internal' && f.safeDouble < 2) return false;
+    if (forceExterior && f.location === 'internal') return false;
+    if (answers.aesthetics === 'no_change') { return (f.type === 'neutral' || f.type === 'invisible'); } 
+    else { return (f.type === answers.style); }
+  });
+  if (candidates.length === 0 && answers.style === 'color') { showResult('exterior_color'); return; }
+  if (candidates.length === 0) { showResult('unsure_contact'); return; }
+  candidates.sort((a,b) => {
+    let scoreA = 0, scoreB = 0;
+    if (answers.goal === 'heat') { scoreA += a.tser; scoreB += b.tser; }
+    if (answers.goal === 'glare') { scoreA += a.glare; scoreB += b.glare; }
+    if (answers.goal === 'insulation') { scoreA += (a.winter?100:0); scoreB += (b.winter?100:0); }
+    if (answers.goal === 'uv') { scoreA += a.tser; scoreB += b.tser; }
+    return scoreB - scoreA;
+  });
+  showResult('match', candidates[0]);
+}
+
+function showResult(type, data) {
+  const container = document.getElementById('result-content');
+  document.getElementById('result-step').classList.add('active');
+  let html = '';
+  if (type === 'poly_stop') {
+    html = `<div class="result-card" style="border-color:var(--danger)"><div class="result-body"><span class="badge" style="background:var(--danger); color:white">SAFETY WARNING</span><div class="result-name">Stop!</div><div class="result-desc">Standard films will bubble on plastic/polycarbonate. You need a <strong>Specialist Poly Film</strong>.</div><button class="cta-btn" onclick="sendEmail('Poly Check','Specialist Poly Film')">Get Specialist Quote</button><button class="reset-link" onclick="location.reload()">Start Over</button></div></div>`;
+  } else if (type === 'contact') {
+    html = `<div class="result-card"><div class="result-body"><div class="result-name">Glass Check</div><div class="result-desc">For safety, we need to confirm your glass type manually.</div><button class="cta-btn" onclick="sendEmail('Glass Check','Needs ID')">Free Check</button><button class="reset-link" onclick="location.reload()">Start Over</button></div></div>`;
+  } else if (type === 'exterior_color') {
+    html = `<div class="result-card"><div class="result-body"><span class="badge" style="background:var(--safety-orange); color:white">EXTERIOR RECOMMENDED</span><div class="result-name">EXTERIOR COLORS</div><div class="result-desc">Internal colors are unsafe for your glass type. We recommend <strong>Exterior Color Series</strong> (Blue, Bronze, Copper, Gold). We can match any shade.</div><button class="cta-btn" onclick="sendEmail('Exterior Color','Exterior Color Series')">Request Quote</button><button class="reset-link" onclick="location.reload()">Start Over</button></div></div>`;
+  } else if (type === 'unsure_contact') {
+    html = `<div class="result-card"><div class="result-body"><div class="result-name">Custom Solution</div><div class="result-desc">Your needs are specific. We work with multiple suppliers (3M, Avery, Solar Screen) and have a solution that requires a manual check.</div><button class="cta-btn" onclick="sendEmail('Manual Check','Custom')">Contact Us</button><button class="reset-link" onclick="location.reload()">Start Over</button></div></div>`;
+  } else {
+    let darkTag = data.isDark ? `<span class="badge badge-dark">High Privacy / Dark</span>` : `<span class="badge badge-light">Natural Light</span>`;
+    let note = data.isDark ? `<div class="notice-box"><strong>Note:</strong> This film is dark/tinted. If you prefer something lighter, let us know!</div>` : ``;
+    html = `<div class="result-card"><div class="result-body">${darkTag}<div class="result-name">${data.name}</div><div class="result-desc">${data.desc}</div><div class="specs-grid"><div class="spec-item"><label>Heat Rejected</label><span>${data.tser}%</span></div><div class="spec-item"><label>Glare Cut</label><span>${data.glare}%</span></div><div class="spec-item"><label>VLT (Light)</label><span>${data.vlt}%</span></div><div class="spec-item"><label>Location</label><span>${data.location === 'external' ? 'EXTERIOR' : 'INTERNAL'}</span></div></div>${note}<button class="cta-btn" onclick="sendEmail('Match','${data.name}')">Get Quote</button><button class="reset-link" onclick="location.reload()">Start Over</button></div></div>`;
+  }
+  container.innerHTML = html;
+}
+
+function sendEmail(recType, recFilm) {
+  const subject = `Quote Request: ${recFilm}`;
+  const body = `Hi Polarvis Team,\n\nI used the Film Finder. Details:\n\nType: ${labels[answers.type]}\nMaterial: ${labels[answers.material]}\nGlass: ${labels[answers.glass]}\nGoal: ${labels[answers.goal]}\nAesthetic: ${labels[answers.aesthetics]} ${answers.style ? '('+labels[answers.style]+')' : ''}\nInstall: ${labels[answers.location]}\n\nResult: ${recFilm}\nNote: ${recType}\n\nPlease contact me.`;
+  window.location.href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+</script>
+
 </body>
 </html>
