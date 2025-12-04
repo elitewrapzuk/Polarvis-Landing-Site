@@ -59,15 +59,15 @@
 
         html { 
             scroll-behavior: smooth; 
-            background-color: var(--bg-dark); /* VITAL FIX: Forces dark background on overscroll */
+            background-color: var(--bg-dark); 
             height: 100%;
         }
         
         body {
             margin: 0; padding: 0; overflow-x: hidden; width: 100%; 
-            background-color: var(--bg-dark); /* Fallback */
+            background-color: var(--bg-dark); 
             background: radial-gradient(circle at top center, #0f1c2e, var(--bg-dark));
-            background-attachment: fixed; /* Keeps gradient fixed so it doesn't run out */
+            background-attachment: fixed; 
             color: var(--polar-white); font-family: 'Montserrat', sans-serif; cursor: default;
             -webkit-tap-highlight-color: transparent;
             min-height: 100vh;
@@ -196,20 +196,27 @@
         .tech-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; transform: translateZ(25px); }
         .tech-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; transform: translateZ(20px); }
         
+        /* NEW ARROW STYLE */
+        .card-arrow {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            color: var(--ice-blue);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            transform: translateZ(30px);
+        }
+        .tech-card:hover .card-arrow {
+            opacity: 1;
+            transform: translate(3px, -3px) translateZ(30px);
+            text-shadow: 0 0 10px var(--ice-blue);
+        }
+
         .specialist-highlight { border: 1px solid rgba(255, 42, 42, 0.4); background: linear-gradient(180deg, rgba(255, 42, 42, 0.08) 0%, rgba(0,0,0,0) 100%); }
         .specialist-highlight .card-icon { background: linear-gradient(135deg, #ff2a2a, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .specialist-highlight:hover { border-color: var(--security-red); box-shadow: 0 15px 40px rgba(255, 42, 42, 0.15); }
 
-        /* --- 9. QUIZ --- */
-        #film-finder { padding: 80px 20px; background: linear-gradient(to bottom, #02050a, #051414); border-top: 1px solid rgba(255,255,255,0.05); }
-        #quiz-container { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; min-height: 400px; position: relative; max-width: 800px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .quiz-step h3 { font-size: 1.6rem; margin-bottom: 30px; }
-        .quiz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; }
-        .quiz-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: white; padding: 15px; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-family: 'Rajdhani', sans-serif; font-size: 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 110px; text-transform: uppercase; letter-spacing: 1px; }
-        .quiz-btn i { font-size: 1.8rem; margin-bottom: 10px; color: var(--ice-blue); transition: 0.3s; }
-        .quiz-btn:hover { background: var(--ice-blue); color: #000; transform: translateY(-5px); border-color: var(--ice-blue); }
-        .quiz-btn:hover i { color: #000; }
-        
         /* --- 10. FOOTER & UTILS --- */
         .solutions-section { padding: 80px 20px; background: rgba(255,255,255,0.02); }
         .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
@@ -237,7 +244,6 @@
             .split-concept { grid-template-columns: 1fr; border: none; }
             .concept-box { border-left: 2px solid var(--glass-border); }
             .hero { padding-top: 110px; }
-            .quiz-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
         }
         
         @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -270,7 +276,7 @@
         <h1>Smarter Glass.<br><span class="gradient-text">Better Living.</span></h1>
         <p>The definitive solution for heat reduction, privacy, and safety. Engineered for privacy, protection, and performance.</p>
         <div class="cta-container">
-            <a href="#film-finder" class="btn-glow">Find Your Ideal Film</a>
+            <a href="#films" class="btn-glow">Explore Our Films</a>
         </div>
     </section>
 
@@ -289,60 +295,37 @@
         </div>
     </section>
 
-    <section id="film-finder">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Find Your <span class="gradient-text">Ideal Film</span></h2>
-            <p style="color: var(--text-secondary); margin-bottom: 40px;">Answer a few quick questions to generate a tailored Solar Screen recommendation.</p>
-            
-            <div id="quiz-container">
-                <div class="quiz-step active" id="step-1">
-                    <h3 style="margin-bottom: 30px;">Type of Property?</h3>
-                    <div class="quiz-grid">
-                        <button class="quiz-btn" onclick="nextStep(1, 'home')"><i class="fa-solid fa-house"></i>Home</button>
-                        <button class="quiz-btn" onclick="nextStep(1, 'business')"><i class="fa-solid fa-building"></i>Business</button>
-                    </div>
-                </div>
-                <div class="quiz-step" id="step-2" style="display:none; opacity:0; transition: opacity 0.5s;">
-                    <h3 style="margin-bottom: 30px;">What is your main goal?</h3>
-                    <div class="quiz-grid">
-                        <button class="quiz-btn" onclick="nextStep(2, 'heat')"><i class="fa-solid fa-temperature-arrow-down"></i>Heat / Cold</button>
-                        <button class="quiz-btn" onclick="nextStep(2, 'privacy')"><i class="fa-solid fa-eye-slash"></i>Privacy</button>
-                        <button class="quiz-btn" onclick="nextStep(2, 'safety')"><i class="fa-solid fa-shield-halved"></i>Safety</button>
-                        <button class="quiz-btn" onclick="nextStep(2, 'decor')"><i class="fa-solid fa-wand-magic-sparkles"></i>Decor</button>
-                        <button class="quiz-btn commercial-only" id="btn-data" onclick="nextStep(2, 'data')" style="display:none;"><i class="fa-solid fa-user-secret"></i>Data Security</button>
-                    </div>
-                </div>
-                <div class="quiz-step" id="step-3" style="display:none; opacity:0; transition: opacity 0.5s;">
-                    <h3 style="margin-bottom: 30px;" id="q3-text">Refine:</h3>
-                    <div class="quiz-grid" id="q3-options"></div>
-                </div>
-                <div class="quiz-step" id="step-result" style="display:none; opacity:0; transition: opacity 0.5s;">
-                    <h3 style="color: var(--ice-blue);">Recommended Film:</h3>
-                    <h2 id="result-title" style="font-size: 2rem; margin: 20px 0;">Film Name</h2>
-                    <p id="result-desc" style="color: #ccc; margin-bottom: 30px;"></p>
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px; display: inline-block;">
-                        <img id="result-img" src="" alt="Film Result" style="height: 180px; width: auto; border-radius: 5px;">
-                    </div>
-                    <br><br>
-                    <a id="result-btn" href="#" class="btn-glow">Get Quote for this Film</a>
-                    <br><br>
-                    <button onclick="resetQuiz()" style="background:none; border:none; color:#666; text-decoration:underline; cursor:pointer;">Start Over</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="collection-section" id="films">
         <div style="text-align: center; margin-bottom: 50px;">
             <h2 style="font-size: 2.5rem;">Core Technologies</h2>
             <p style="color:var(--text-secondary);">Click cards to explore full details.</p>
         </div>
         <div class="card-grid">
-            <div class="tech-card" onclick="window.location.href='solar-control.html'"><i class="fa-solid fa-temperature-arrow-down card-icon"></i><div class="tech-card-content"><h3>Solar Control</h3><p>Heat rejection & glare reduction.</p></div></div>
-            <div class="tech-card" onclick="window.location.href='privacy-film.html'"><i class="fa-solid fa-eye-slash card-icon"></i><div class="tech-card-content"><h3>Privacy</h3><p>One-way mirror & frosted solutions.</p></div></div>
-            <div class="tech-card" onclick="window.location.href='decorative-film.html'"><i class="fa-solid fa-wand-magic-sparkles card-icon"></i><div class="tech-card-content"><h3>Decorative</h3><p>Coloured vinyls & patterns.</p></div></div>
-            <div class="tech-card" onclick="window.location.href='safety-film.html'"><i class="fa-solid fa-shield-halved card-icon"></i><div class="tech-card-content"><h3>Safety</h3><p>Reinforced glass protection.</p></div></div>
-            <div class="tech-card specialist-highlight" onclick="window.location.href='specialist-film.html'"><i class="fa-solid fa-fingerprint card-icon"></i><div class="tech-card-content"><h3>Specialist</h3><p>Data Jammer & Anti-Graffiti.</p></div></div>
+            <div class="tech-card" onclick="window.location.href='solar-control.html'">
+                <i class="fa-solid fa-arrow-right-long card-arrow"></i>
+                <i class="fa-solid fa-temperature-arrow-down card-icon"></i>
+                <div class="tech-card-content"><h3>Solar Control</h3><p>Heat rejection & glare reduction.</p></div>
+            </div>
+            <div class="tech-card" onclick="window.location.href='privacy-film.html'">
+                <i class="fa-solid fa-arrow-right-long card-arrow"></i>
+                <i class="fa-solid fa-eye-slash card-icon"></i>
+                <div class="tech-card-content"><h3>Privacy</h3><p>One-way mirror & frosted solutions.</p></div>
+            </div>
+            <div class="tech-card" onclick="window.location.href='decorative-film.html'">
+                <i class="fa-solid fa-arrow-right-long card-arrow"></i>
+                <i class="fa-solid fa-wand-magic-sparkles card-icon"></i>
+                <div class="tech-card-content"><h3>Decorative</h3><p>Coloured vinyls & patterns.</p></div>
+            </div>
+            <div class="tech-card" onclick="window.location.href='safety-film.html'">
+                <i class="fa-solid fa-arrow-right-long card-arrow"></i>
+                <i class="fa-solid fa-shield-halved card-icon"></i>
+                <div class="tech-card-content"><h3>Safety</h3><p>Reinforced glass protection.</p></div>
+            </div>
+            <div class="tech-card specialist-highlight" onclick="window.location.href='specialist-film.html'">
+                <i class="fa-solid fa-arrow-right-long card-arrow"></i>
+                <i class="fa-solid fa-fingerprint card-icon"></i>
+                <div class="tech-card-content"><h3>Specialist</h3><p>Data Jammer & Anti-Graffiti.</p></div>
+            </div>
         </div>
     </section>
 
@@ -396,83 +379,6 @@
     </footer>
 
     <script>
-        // QUIZ
-        let quizState = {};
-        function nextStep(step, val) {
-            quizState[step] = val;
-            const el = document.getElementById(`step-${step}`);
-            el.style.opacity = '0';
-            setTimeout(() => {
-                el.style.display = 'none';
-                if (step === 1) {
-                    const d = document.getElementById('btn-data');
-                    if(d) d.style.display = (val === 'business') ? 'flex' : 'none';
-                    showStep(2);
-                } else if (step === 2) { buildQ3(val); } 
-                else if (step === 3) { calculateResult(val); }
-            }, 500);
-        }
-        function showStep(id) {
-            const el = document.getElementById(`step-${id}`);
-            el.style.display = 'block';
-            setTimeout(() => el.style.opacity = '1', 50);
-        }
-        function buildQ3(goal) {
-            const txt = document.getElementById('q3-text');
-            const box = document.getElementById('q3-options');
-            box.innerHTML = '';
-            let opts = [];
-            if (goal === 'heat') {
-                txt.innerText = "Specific Heat Issue?";
-                opts = [{t:"Too Hot (Summer)", i:"fa-sun", v:"hot"},{t:"Too Cold (Winter)", i:"fa-snowflake", v:"cold"},{t:"Fading Furniture (UV)", i:"fa-couch", v:"uv"},{t:"I want Clear Glass", i:"fa-droplet", v:"clear"}];
-            } else if (goal === 'privacy') {
-                txt.innerText = "Privacy Preference?";
-                opts = [{t:"Daytime Only (See Out)", i:"fa-eye", v:"mirror"},{t:"24/7 Total Privacy", i:"fa-eye-slash", v:"frosted"}];
-            } else if (goal === 'decor') {
-                txt.innerText = "Design Style?";
-                opts = [{t:"Frosted / Etched", i:"fa-gem", v:"frosted"},{t:"Solid Colour / Brand", i:"fa-paint-roller", v:"colour"}];
-            } else if (goal === 'safety') {
-                txt.innerText = "Primary Concern?";
-                opts = [{t:"Accidental Breakage", i:"fa-child", v:"shatter"},{t:"Vandalism / Graffiti", i:"fa-spray-can", v:"graffiti"},{t:"Forced Entry", i:"fa-lock", v:"security"}];
-            } else if (goal === 'data') { calculateResult('data'); return; }
-            
-            opts.forEach(o => {
-                const b = document.createElement('button');
-                b.className = 'quiz-btn';
-                b.onclick = () => nextStep(3, o.v);
-                b.innerHTML = `<i class="fa-solid ${o.i}"></i>${o.t}`;
-                box.appendChild(b);
-            });
-            showStep(3);
-        }
-        function calculateResult(val) {
-            let t, d, i;
-            if(val==='hot') { t="Solar Screen Silver 20"; d="Maximum heat rejection (80%) and glare reduction."; i="solar.WEBP"; }
-            else if(val==='cold') { t="Solar Screen MultiGlass 66 C (Low-E)"; d="Insulates windows: keeps heat out in summer, retains heat in winter."; i="solar.WEBP"; }
-            else if(val==='uv') { t="Solar Screen Museum Grade UV"; d="Blocks 99.9% of UV rays to stop fading without darkening the room."; i="solar.WEBP"; }
-            else if(val==='clear') { t="Solar Screen Spectra 80"; d="High-tech ceramic film. Rejects heat while remaining clear."; i="solar.WEBP"; }
-            else if(val==='mirror') { t="Solar Screen Vista 90"; d="One-way mirror effect. See out during the day, no one sees in."; i="privacy.PNG"; }
-            else if(val==='frosted') { t="Solar Screen Mat White"; d="Classic frosted privacy. Blocks vision day & night, lets light in."; i="decorative.JPG"; }
-            else if(val==='colour') { t="Architectural Coloured Vinyl"; d="Transform glass with solid colours or custom patterns."; i="decorative.JPG"; }
-            else if(val==='shatter') { t="Solar Screen Clear 4 C"; d="4-mil safety film. Holds glass together upon impact."; i="safety.JPG"; }
-            else if(val==='security') { t="Solar Screen Clear 8 C"; d="Heavy-duty 8-mil security film to deter break-ins."; i="safety.JPG"; }
-            else if(val==='graffiti') { t="Solar Screen AGI 100"; d="Anti-Graffiti sacrificial layer. Protects glass from scratches."; i="specialist.JPG"; }
-            else if(val==='data') { t="Solar Screen Data Jammer"; d="Screens appear black to onlookers while glass remains clear."; i="specialist.JPG"; }
-            
-            document.getElementById('result-title').innerText = t;
-            document.getElementById('result-desc').innerText = d;
-            document.getElementById('result-img').src = i;
-            const type = quizState[1] === 'home' ? "Residential" : "Commercial";
-            const sub = `Quote Request: ${t} (${type})`;
-            document.getElementById('result-btn').href = `mailto:contact@polarvis.uk?subject=${encodeURIComponent(sub)}`;
-            showStep('result');
-        }
-        function resetQuiz() {
-            document.getElementById('step-result').style.display = 'none';
-            document.getElementById('step-result').style.opacity = '0';
-            showStep(1);
-        }
-
         // 3D TILT
         const cards = document.querySelectorAll('.tech-card');
         function handleMove(e, card) {
